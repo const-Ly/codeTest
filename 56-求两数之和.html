@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // var twoSum = function (nums, target) {
+        //     let i = nums.length;
+        //     while (i > 1) {
+        //         let last = nums.pop();
+        //         if (nums.indexOf(target - last) > -1) {
+        //             return [nums.indexOf(target - last), nums.length]
+        //         }
+        //         i--
+        //     }
+        // };
+
+        // var twoSum = function (nums, target) {
+        //     const map = new Map();
+        //     for (let i = 0; i < nums.length; i++) {
+        //         const res = target - nums[i];
+        //         if (map.has(res)) {
+        //             return [map.get(res), i];
+        //         } else {
+        //             console.log(nums[i])
+        //             map.set(nums[i], i);
+        //         }
+        //     }
+        // }
+
+        // var res = twoSum([1, 4, 6, 5, 8], 10)
+        // console.log(res)
+
+        function twoSum(nums, target) {
+            const map = new Map()
+            for (var i = 0; i < nums.length - 1; i++) {
+                let res = target - nums[i];
+                if(map.has(res)) {
+                    return [map.get(res), i];
+                } else {
+                    map.set(nums[i], i);
+                }
+            }
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

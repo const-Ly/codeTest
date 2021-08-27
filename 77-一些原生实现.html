@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // https://mp.weixin.qq.com/s/klVQmjeWQipeoE3mDP2tGA
+
+        /**
+         * 
+         * 实现原生的call
+         * 
+         * obj
+        */
+
+        if (!Function.prototype.call) {
+            Function.prototype.call = function (...args) {
+                const _this = this;
+                const ctx = args.shift() || window
+                const fn = Symbol("fn")
+                ctx[fn] = _this;
+                ctx[fn](args)
+                delete ctx[fn];
+            }
+        }
+
+        /**
+         * 
+         * 实现原生的apply
+         * 
+         * obj
+        */
+
+        if (!Function.prototype.apply) {
+            Function.prototype.apply = function (...args) {
+                const _this = this;
+                const ctx = args.shift() || window
+                const fn = Symbol("fn")
+                ctx[fn] = _this;
+                ctx[fn](...args)
+                delete ctx[fn];
+            }
+        }
+        /**
+         * 
+         * 实现原生的bind
+         * 
+         * obj
+        */
+
+        if (!Function.prototype.bind) {
+            Function.prototype.bind = function (...args) {
+                const _this = this;
+                const ctx = args.shift() || window
+                return function () {
+                    return _this.apply(ctx, arguments.concat(args))
+                }
+            }
+        }
+        /**
+         * 
+         * 实现原生的create
+         * 
+         * 将传入的对象作为原型,返回一个新的对象
+        */
+
+        if (!Function.prototype.create) {
+            Function.prototype.create = function (obj) {
+                function F() { }
+                F.prototype = obj
+                return new F();
+            }
+        }
+
+        if (!Function.prototype.create) {
+            Function.prototype.create = function (obj) {
+                const newObj = {}
+                newObj.__proto__ = obj;
+                return newObj;
+            }
+        }
+
+        /**
+        * 
+        * 实现原生的create
+        * 
+        * 将传入的对象作为原型
+       */
+
+        function myNew(fn, ...agrs) {
+            let obj = {};
+            obj.__proto__ = fn.prototype;
+
+            fn.apply(obj, agrs);
+            return obj;
+        }
+        function Person(name) {
+            this.name = name
+        }
+
+
+        /**
+        * 
+        * 实现一个基本的Event Bus
+        * 
+        * 将传入的对象作为原型
+       */
+
+        class EventEmitter {
+            constructor() {
+                this.events = this.events || new Map()
+            }
+
+            addEventListener(type, callback) {
+                if (!this.events.get(type)) {
+                    this.events.set(type, callback)
+                }
+            }
+
+            emit(type) {
+
+                let callback = this.events.get(type);
+                if (callback) {
+                    callback.apply(this, [...arguments].slice(1));
+                } else {
+                    console.log("请确认是否添加事件")
+                }
+            }
+        }
+
+
+        // 测试
+        let emitter = new EventEmitter()
+
+        emitter.addEventListener("age", function (age) {
+            console.log(age)
+        })
+
+        emitter.emit("age", 18)
+
+
+        // 节流 指的是 每过一段时间执行一次
+        function throttle(fn, delay) {
+            let time = new Date().valueOf();
+            return function (...args) {
+
+                let currentTime = new Date().valueOf();
+                if (currentTime - time > delay) {
+                    fn.apply(this, args)
+                    time = new Date().valueOf();
+                }
+            }
+        }
+
+        throttle(fn, 100)
+
+
+        // 防抖 指的是 如果本次执行时  清除上次的执行
+        function debounce(fn, delay) {
+            let timer;
+            return function (...argus) {
+
+                if (timer) clearTimeout(timer)
+
+                timer = setTimeout(() => {
+                    fn.apply(this, argus)
+                }, delay)
+
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

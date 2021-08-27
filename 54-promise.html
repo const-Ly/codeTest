@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./54-promise.js"></script>
+</head>
+
+<body>
+    <script>
+        console.log(Promise)
+        function promiseFn(timeout, flag) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    flag ? resolve(timeout) : reject(timeout)
+                }, timeout);
+            })
+        }
+
+        function nextStep(res) {
+            console.log('next', res)
+            return res > 200 ? Promise.reject(res) : Promise.resolve(res + 100);
+        }
+
+        // const promiseObj = promiseFn(100, 1);
+        // promiseObj.then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .then(res => nextStep(res))
+        //     .catch(err => console.error('err', err))
+        // const a = promiseFn(100, 1)
+        // const b = promiseFn(200, 2).then(res => {
+        //     return res;
+        // })
+        // console.log(a)
+        // console.log(b)
+        // Promise.all([
+        //     promiseFn(100, 1),
+        //     promiseFn(2000, 1),
+        //     promiseFn(300, 1)
+        // ])
+        //     .then(resDatas => {
+        //         console.log('all-suc', resDatas)
+        //     })
+        //     .catch(err => {
+        //         console.error('all-err', err)
+        //     })
+
+        // Promise.all([
+        //     promiseFn(1000, 0).then(res => { console.log(`suc-${res}`); return res }),
+        //     promiseFn(2000, 1).then(res => { console.log(`suc-${res}`); return res }),
+        //     promiseFn(300, 1).then(res => { console.log(`suc-${res}`); return res })
+        // ])
+        //     .then(resDatas => {
+        //         console.log('all-suc', resDatas)
+        //     })
+        //     .catch(err => {
+        //         console.error('all-err', err)
+        //     })
+
+        // Promise.all([
+        //     promiseFn(100, 1).then(res => { console.log(`suc-${res}`); return res }).catch(res => { console.error(`err-${res}`); return res }),
+        //     promiseFn(2000, 0).then(res => { console.log(`suc-${res}`); return res }).catch(res => { console.error(`err-${res}`); }),
+        //     promiseFn(300, 0).then(res => { console.log(`suc-${res}`); return res }).catch(res => { console.error(`err-${res}`); return res })
+        // ])
+        //     .then(resDatas => {
+        //         console.log('all-suc', resDatas)
+        //     })
+        //     .catch(err => {
+        //         console.error('all-err', err)
+        //     })
+    </script>
+</body>
+
+</html>

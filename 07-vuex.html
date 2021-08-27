@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = ['1_1', '1_2', '2_1', '2_2', '3_2', '4_2', '2_2', ]
+    const newArr = arr.reduce((prev, cur) => prev.includes(cur) ? prev : [...prev, cur], []);
+
+    console.log(newArr)
+
+
+    // const saveEmailList = $s.drawForm.list;
+    // const salerMemberAccount = [];
+    // saveEmailList.forEach((item, index) => {
+    //   const clientCode = '',
+    //     corpUserId = '',
+    //     id = '',
+    //     accountStatus = ''
+    //   if ($s.drawForm.optionsList[index]) {
+    //     $s.drawForm.optionsList[index].forEach((val) => {
+    //       if ((item.name === val.id) || (item.corpUserId === val.corpUserId)) {
+    //         clientCode = val.clientCode
+    //         corpUserId = val.corpUserId
+    //         id = item.editId
+    //         accountStatus = item.accountStatus
+    //       }
+    //     })
+    //     salerMemberAccount.push({
+    //       clientCode,
+    //       corpUserId,
+    //       salerCode: $s.drawForm.salerCode,
+    //       id,
+    //       accountStatus
+    //     })
+    //   }
+
+    // });
+    // console.log(salerMemberAccount)
+
+    // ;
+    // ({
+    //   id: $s.drawForm.id,
+    //   userType: $s.drawForm.userType,
+    //   salerName: $s.drawForm.salerName,
+    //   salerCode: $s.drawForm.salerCode,
+    //   salerRoleType: $s.drawForm.salerRoleType,
+    //   salerGroupId: $s.drawForm.salerRoleType === 1 ? 0 : $s.drawForm.salerGroupId,
+    //   salerMemberAccount
+    // })
+
+
+
+    const arrs = [1, 5, 7, 8, 9]
+    var twoSum = function (nums, target) {
+      const _length = nums.length;
+      const _mayMap = new Map();
+      for (let i = 0; i < _length; i++) {
+        if (_mayMap.has(target - nums[i])) {
+          return [_mayMap.get(target - nums[i]), i];
+        }
+        _mayMap.set(nums[i], i); // {1, 0}   { value: key}
+      }
+    };
+
+    console.log(twoSum(arrs, 16))
+
+
+    const twoSunObject = function (arr, target) {
+      const obj = {}
+      for (let i = 0; i < arr.length; i++) {
+        if (obj[arr[i]]) {
+          return [obj[arr[i]], i]
+        }
+
+        obj[target - arr[i]] = arr[i]
+      }
+    }
+
+    console.log(twoSunObject(arrs, 16))
+  </script>
+</body>
+
+</html>

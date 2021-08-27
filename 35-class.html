@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var entries = function (obj) {
+            var ownProps = Object.keys(obj),
+                i = ownProps.length,
+                resArray = new Array(i); // preallocate the Array
+            while (i--) {
+                console.info(i)
+                resArray[i] = [ownProps[i], obj[ownProps[i]]];
+            }
+            return resArray;
+        };
+
+        var obj = { foo: 'bar', baz: 'abc' };
+
+        console.info(entries(obj))
+    </script>
+</body>
+
+</html>

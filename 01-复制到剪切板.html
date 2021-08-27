@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            width: 10px;
+            height: 10px;
+            border: 10px solid transparent;
+            border-right: 10px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box'></div>
+    <script>
+        const box = document.querySelector('#box')
+        console.log(box)
+        box.onclick = function (e) {
+            console.log(e)
+            let val = '2222222'
+            let inputEle = document.createElement('input')
+            document.body.appendChild(inputEle)
+            inputEle.setAttribute('value', val)
+            inputEle.setAttribute('readonly', 'readonly')
+            inputEle.select()
+            document.execCommand('copy')
+            inputEle.setAttribute('style', 'display:none')
+        }
+
+        Function.prototype.bind = function () {
+            var self = this, // 保存原有函数
+                context = [].shift.call(arguments), // 借用数组的shift函数，取到需要绑定的this上下文
+                args = [].slice.call(arguments); // 借用数组的slice函数，把剩余参数转成数组
+            return function () { // 返回一个新函数
+                //  执行新函数的时候，会把之前传入的context当做新函数体内的this，并且借用数组concat函数组合两次分别传入的参数,作为新函数的参数
+                return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+            }
+        };
+
+        // $s.btnAccess.data.includes('/formalnetsale_insurance_alloffpacket')
+
+        // ($s.course.active == 'bxxly' && $s.btnAccess.data.includes('/formalnetsale_insurance_alloffpacket')) || ($s.course.active == 'jjxly' && $s.btnAccess.data.includes('/formalnetsale_fund_alloffpacket')) || ($s.course.active == 'gpxly' && $s.btnAccess.data.includes('/formalnetsale_stock_alloffpacket')) 
+
+        // ($s.course.active == 'bxxly' || $s.course.active == 'jjxly' || $s.course.active == 'gpxly') && ($s.btnAccess.data.includes('/formalnetsale_insurance_alloffpacket'))
+    </script>
+</body>
+
+</html>

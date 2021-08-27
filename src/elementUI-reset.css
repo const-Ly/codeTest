@@ -1,0 +1,186 @@
+/* collapse */
+.cms .el-collapse-item__header {
+  	padding-left: 20px;
+}
+
+/* 全局 loading */
+#app .el-loading-mask {
+  position: fixed;
+  z-index: 999999999;
+  background-color: rgba(255,255,255,.9);
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity .3s;
+}
+
+/* loading */
+.el-loading-mask .el-loading-spinner .el-loading-text {
+color: #fff;
+}
+
+/* table */
+.cms .el-table__expanded-cell[class*=cell] {
+  padding:0;
+}
+.cms .el-collapse-item__content {
+	padding-bottom: 0
+}
+
+/*面包屑*/
+.breadcrumb-nav {
+  display: inline-block;
+}
+
+/* 上传图像 */
+.avatar-uploader .el-upload {
+  width:100%;
+  height:100%;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  position:absolute;
+  left:50%;
+  top:50%;
+  font-size: 28px;
+  color: #8c939d;
+  transform:translate3d(-50%,-50%,0);
+}
+.avatar{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.map-box{
+	display: none;
+	width: 100%;
+  height: 100%;
+	position: absolute;
+	left:0;
+	top:0;
+	background-color: rgba(0,0,0,.3)
+}
+.map-box div {
+  position:absolute;
+  width:100%;
+  left:50%;
+  top:50%;
+  transform:translate3d(-50%,-50%,0);
+}
+.map-box div i {
+  font-size:24px;
+  color: #ffffff;
+  display:inline-block;
+}
+.avatar-uploader:hover  .map-box {
+	display: block;
+}
+
+/*多个输入框*/
+.multiInput .el-form-item__content {
+	width:60%;
+}
+.multiInput .el-form-item__content  .el-input {width:30%;}
+.form-item-cell .el-form-item__content {width:100%;}
+
+/*遮罩*/
+.el-loading-mask .el-loading-spinner i {
+  color: #ffffff;
+  font-size: 50px;
+}
+div.el-loading-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/*确认框*/
+.multi-info-list .el-dialog__body {
+  max-height: 65px;
+  overflow-y: auto;
+}
+.multi-info-list .el-dialog__footer {
+  text-align: center;
+}
+
+/* 折叠菜单 */
+.el-collapse {
+  border-left: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+}
+.el-collapse-item__header {
+  background-color: #EAEAEA!important;
+  padding-left: 20px;
+  border-bottom-color:#fff!important;
+}
+.el-collapse-item__wrap {
+  padding:0 20px;
+  padding-top: 20px;
+}
+
+.el-submenu__icon-arrow{
+	margin-top: -3px!important;
+}
+.el-submenu .el-menu-item{
+	min-width: 140px!important;
+}
+
+.el-submenu, .el-submenu .el-menu-item, .el-menu-item, .el-submenu__title {
+  height: auto !important;
+  line-height: 40px!important;
+}
+.el-message-box__message p {text-align: left;}
+
+
+.el-message-box__content {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.by-editor .ql-container {
+  height: 320px;
+}
+
+
+
+/* 公共样式 */
+.mar-t20 {
+  margin-top: 20px;
+}
+.text-first > label::before {
+  content: "* ";
+  color: red;
+}
+.text-label label.el-form-item__label::before {
+  content: "* ";
+  color: red;
+}
+.number-input input {
+  width: 100px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 15px;
+}
+/* app瘦身全选框 火狐兼容 */
+.init-reset .el-table .cell,
+.init-reset .el-table th div {
+  overflow: unset;
+}
+/* 访客查看弹窗禁用样式重置 */
+.visitor-dialog-color .el-radio__input.is-disabled+span.el-radio__label {
+  color: #606266;
+}
+.visitor-dialog-color .el-checkbox__input.is-disabled+span.el-checkbox__label {
+  color: #606266;
+}

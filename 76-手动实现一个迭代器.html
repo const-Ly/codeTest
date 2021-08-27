@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .colorableContainer {
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        function makeIterator(array) {
+            var nextIndex = 0;
+            return {
+                next: function () {
+                    return nextIndex < array.length ?
+                        {
+                            value: array[nextIndex++],
+                            done: false
+                        }
+                        :
+                        {
+                            value: undefined,
+                            done: true
+                        };
+                }
+            };
+        }
+
+        import React from 'react';
+
+        export default class ColorableContainer extends React.Component {
+
+            render() {
+                return (
+                    <div className='colorableContainer' style={{ backgroundColor: this.props.backgroundColor }} >
+                        {this.props.children}
+                    </div>
+                )
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

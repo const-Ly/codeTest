@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a ;
+        var obj = {
+            name: {a:1},
+            getName: function() {
+                a = this.name;
+                this.name = null
+            }
+        }
+
+        obj.getName();
+        console.log(a)
+
+        // var myApp = {}
+        // myApp.namespace = function (name) {
+        //     let arr = name.split(".")["dom", "style"]
+        //     let current = myApp // dom: {}
+        //     for (var i in arr) {
+        //         if (!current[arr[i]]) {
+        //             current[arr[i]] = {} // {dom: {}}
+        //         }
+        //         current = current[arr[i]]// dom = {}
+        //     }
+        // }
+        // myApp.namespace("dom.style")
+        // console.dir(myApp)
+
+        // myApp.namespace.bind(this)
+
+        // Function.prototype.bind = function(that) {
+        //     let originFn = this;
+        //     return function() {
+        //         return originFn.apply(that, arguments);
+        //     }
+        // }
+
+
+        // var arr = [1,2,3,4]
+        // var str = JSON.stringify(arr)
+
+        // var obj = {
+        //     str
+        // }
+        // console.log(str)
+        // console.log(obj)
+        // var arr = ["1"]
+        // let a = ''
+        // arr.forEach(item => {
+        //     switch (item) {
+        //         case "1":
+        //         case "2":
+        //             a = 2;
+        //             break
+        //         case "3":
+        //             a = 3;
+        //             break
+        //     }
+        // })
+
+
+    </script>
+</body>
+
+</html>

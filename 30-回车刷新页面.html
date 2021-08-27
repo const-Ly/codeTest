@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="box" action="" onsubmit="">
+        <input type="text" name="name" id="">
+        <input type="text" name="age" id="">
+        <button type="onsubmit">提交</button>
+    </form>
+</body>
+
+</html>
+
+<script>
+    // var box = document.getElementById("box")
+    // box.onsubmit = function(e){
+    //     console.log(e)
+    //     console.log(this)
+    //     return false
+    // }
+    // box.onkeydown = function (e) {
+    //     console.log(e)
+    //     if (e.keyCode === 13) {
+    //         console.log(this)
+    //     }
+    // }
+
+
+    function componse1(...args) {
+        if (!args.length) return undefined
+        if (args.length === 1) return args[0]
+        return args.reduce((a, b) => (...args) => a(b.apply(null, args)))
+    }
+
+    function componse() {
+        let funs = [];
+        for (let i = 0; i < arguments.length; i++) {
+            funs[i] = arguments[i];
+        }
+        return funs.reduce(function (aaa, bbb) {
+            return function cc() {
+                console.log(arguments)
+                return aaa(bbb.apply(null, arguments))
+            }
+        })
+
+
+
+        /**
+            function (a, b) {
+                return function cc() {
+                    return a(b.apply(null, arguments))
+                }
+            }
+
+            function (b, c) {
+                return function cc() {
+                    return b (c.apply(null, arguments))
+                }
+            }
+
+            function (c, d) {
+                return function cc() {
+                    return c(d.apply(null, arguments))
+                }
+            }
+
+            a(b.apply(null, arguments))
+            ((a(b.apply(null, arguments)))((c.apply(null, arguments))))((d.apply(null, arguments)))
+
+        */
+    }
+
+    function cc1() {
+        return a(b.apply(null, arguments))
+    }
+
+    // cc1
+
+    var res = componse(a, b, c, d)
+    var aa = res(1)
+    console.log(res)
+    console.log(aa)
+
+    function a(a) {
+        console.log("a")
+        return a + 1
+    }
+
+    function b(b) {
+        console.log("b")
+        return b + 2
+    }
+
+    function c(c) {
+        console.log("c")
+        return c + 3
+    }
+
+    function d(d) {
+        console.log("d")
+        return d + 4
+    }
+
+    function compose() {
+        var fns = [].slice.call(arguments)
+        return function (initialArg) {
+            var res = initialArg
+            for (var i = fns.length - 1; i > -1; i--) {
+                res = fns[i](res)
+            }
+            return res
+        }
+    }
+</script>

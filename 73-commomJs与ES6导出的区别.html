@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input {
+            caret-color: #fff;
+        }
+
+        .more-wraper {
+            position: relative;
+            overflow: hidden;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-more {
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+            margin: 20px;
+            border: 4px solid #808080;
+            border-bottom-color: transparent;
+            vertical-align: middle;
+            animation: turn 0.75s linear infinite;
+            transform: translateZ(0);
+        }
+
+        @keyframes turn {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .more-wraper text {
+            color: #310a0a;
+            font-size: 24px;
+        }
+
+        .more-wraper .loading-more-end {
+            position: relative;
+            font-size: 22px;
+            color: #BBBBBB;
+        }
+
+        .loading-more-end:before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            width: 32px;
+            height: 2px;
+            background-color: #D8D8D8;
+        }
+
+        .loading-more-end:after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            width: 32px;
+            height: 2px;
+            background-color: #D8D8D8;
+        }
+
+        .none {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="more-wraper load-more-class">
+        <div class="loading-more"></div>
+        <span class=" load-more-text">加载中....</span>
+    </div>
+
+
+    <input class='input' />
+    <script src="">
+
+        //https://mp.weixin.qq.com/s/osAmP8FgiVBP7vR-8w1kWQ
+
+
+        /**
+         *
+         *  CommonJs模块输出的是一个值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。
+            ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令import，就会生成一个只读引用。
+            等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的import有点像 Unix 系统的“符号连接”，原始值变了，import加载的值也会跟着变。
+            因此，ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。
+         *
+         */
+
+
+    </script>
+</body>
+
+</html>

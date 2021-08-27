@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./50-.css">
+    <style>
+        .div {
+            width: 150px;
+            height: 30px;
+            border: 1px solid black;
+            list-style: none;
+            padding: 0;
+            margin: 100px 0 0 100px;
+            overflow: hidden;
+        }
+
+        .ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .li {
+            width: 150px;
+            height: 30px;
+            font-size: 14px;
+            line-height: 30px;
+            list-style: none;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <ul class="ul">
+            <li class="li">你打算到卡上打的1</li>
+            <li class="li">你打算到卡上打的2</li>
+            <li class="li">你打算到卡上打的3</li>
+            <li class="li">你打算到卡上打的4</li>
+            <li class="li">你打算到卡上打的5</li>
+            <li class="li">你打算到卡上打的6</li>
+            <li class="li">你打算到卡上打的7</li>
+        </ul>
+    </div>
+
+    <script>
+
+        // var str = "评论{wn}个字可得{gc1}金币";
+        // var arr1 = str.split("{wn}")
+        // arr1.splice(1, 0, 10)
+        // var str1 = arr1[2]
+        // var arr2 = str1.split("{gc1}")
+        // arr2.splice(1, 0, 30)
+        // var arr = arr1.concat(arr2)
+        // arr.splice(2, 1);
+        // console.log(arr)
+
+
+
+        let count = 0;
+
+        function test() {
+            while (true) {
+                count++;
+                console.log(count)
+                if (count > 3) {
+                    return true
+                }
+            }
+        }
+
+        // a = test();
+        // console.log(a)
+
+
+        var arr = [3, 5, 4, 0, 1, 2]
+
+        arr.sort(function (a, b) {
+            // console.info(a)
+            // console.info(b)
+            return b-a
+        })
+
+        console.info(arr)
+
+    </script>
+</body>
+
+</html>

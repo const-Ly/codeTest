@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container1 {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .border {
+      width: 200px;
+      height: 80px;
+      border: 1px solid red;
+      border-radius: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container1">
+    <div class="border">121212</div>
+    <div class="border">死打算打算</div>
+    <div class="border">adasd</div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  function a(...args) {
+    console.log(args)
+  }
+  a(1, 2, 3, 4)
+
+  var obj = {
+    "data": {
+      "type": "object",
+      "description": {
+        "pageTitle": "一个圈层的生活方式",
+        "refreshData": 12,
+        "dynamicList": {
+          "type": "object",
+          "description": [{
+            "type": "object",
+            "description": {
+              "avatarUrl": "https://avatarUrl.png",
+              "nickName": "166****1709",
+              "identityText": "我是大V",
+              "userIdentity": 1,
+              "content": "这是动态文案",
+              "imageList": {
+                "type": "object",
+                "description": ["https://1.png", "https://2.png"],
+                "mock": {
+                  "mock": 1
+                }
+              },
+              "cardInfo": {
+                "type": "object",
+                "description": {
+                  "img": "https://su_store.png",
+                  "content": "店铺名称或商品短标题",
+                  "businessId": 100231321121
+                },
+                "mock": {
+                  "mock": 1
+                }
+              },
+              "likesNumber": 12,
+              "isLike": 0,
+              "dynamicId": 12312111,
+              "dynamicType": 1,
+              "sourceContent": "原动态文案",
+              "sourceDynamicId": 132122221,
+              "shareInfo": {
+                "type": "object",
+                "description": {
+                  "img": "https://su_store.png",
+                  "title": "分享标题"
+                },
+                "mock": {
+                  "mock": 1
+                }
+              },
+              "showFriendList": 0
+            },
+            "mock": {
+              "mock": 1
+            }
+          }],
+          "mock": {
+            "mock": 1
+          }
+        },
+        "friendList": {
+          "type": "object",
+          "description": [{
+            "type": "object",
+            "description": {
+              "avatarUrl": "https://avatarUrl.png",
+              "nickName": "166****1709",
+              "uid": 101123,
+              "contactName": "哪吒"
+            },
+            "mock": {
+              "mock": 1
+            }
+          }],
+          "mock": {
+            "mock": 1
+          }
+        }
+      },
+      "mock": {
+        "mock": 1
+      }
+    },
+    "success": 1
+  }
+
+  function b(options) {
+    let a = '123;456;dsadsadasdasdas'.split(";");
+    let obj = {};
+    if (a.length > 1) {
+      a.forEach((item, index) => {
+        if (index < a.length - 1) {
+          obj[options.params[index]] = item
+        }
+      })
+      hashCode = options.params[a.length - 1];
+    } else {
+      hashCode = params[0];
+    }
+    return obj
+  }
+
+
+  console.log(b({
+    params: ['uid', 'suid']
+  }))
+</script>

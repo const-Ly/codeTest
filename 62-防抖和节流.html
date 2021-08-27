@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+        
+        函数的防抖：
+            就是在特定时间内可以触发多次，即使上一次的操作还未执行完毕（时间未到），直接清除掉后（清除定时器），然后在重新当前这一次的时间！
+        函数的节流：
+            就是在特定时间内只能触发一次，因为触发了这一次后，直接把标志符设置为false了，只能等待定时器的时间执行完后，把标志符重新设置为true，踩在继续触发事件！
+        */
+
+        function debounce(func, wait, immediate) {
+            let time;
+            let debounced = function () {
+                let context = this;
+                if (time) clearTimeout(time);
+                if (immediate) {
+                    let callNow = !time;
+                    if (callNow) func.apply(context, arguments);
+                    time = setTimeout(
+                        () => { time = null } //见注解
+                        , wait)
+                } else {
+                    time = setTimeout(
+                        () => { func.apply(context, arguments) }
+                        , wait)
+                }
+            };
+            debounced.cancel = function () {
+                clearTimeout(time);
+                time = null
+            };
+            return debounced
+        }
+
+
+        function throttle(func, wait, options) {
+            let time, context, args, result;
+            let previous = 0;
+            if (!options) options = {};
+            let later = function () {
+                previous = options.leading === false ? 0 : new Date().getTime();
+                time = null;
+                func.apply(context, args);
+                if (!time) context = args = null;
+            };
+            let throttled = function () {
+                let now = new Date().getTime();
+                if (!previous && options.leading === false) previous = now;
+                let remaining = wait - (now - previous);
+                context = this;
+                args = arguments;
+                if (remaining <= 0 || remaining > wait) {
+                    if (time) {
+                        clearTimeout(time);
+                        time = null;
+                    }
+                    previous = now;
+                    func.apply(context, args);
+                    if (!time) context = args = null;
+                } else if (!time && options.trailing !== false) {
+                    time = setTimeout(later, remaining);
+                }
+            };
+            return throttled;
+        }
+
+        function throttle(fn, wait, mustRun) {
+            let start = new Date()
+            let timeout
+            return () => {
+                // 在返回的函数内部保留上下文和参数
+                let context = this
+                let args = arguments
+                let current = new Date()
+                clearTimeout(timeout)
+                let remaining = current - start
+                // 达到了指定触发时间，触发该函数
+                if (remaining > mustRun) {
+                    fn.apply(context, args)
+                    start = current
+                } else {
+                    // 否则wait时间后触发，闭包保留一个timeout实例
+                    timeout = setTimeout(fn, wait);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

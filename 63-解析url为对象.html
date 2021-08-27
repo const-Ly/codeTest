@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var url = "https://webim.tim.qq.com/v4/group_open_http_svc/send_group_msg?platform=10&websdkappid=537048168&v=1.7.3&a2=d91c798910fbd8a48007cc27df863d7c691bfd3a30d767708afeb887c9c50cfc2244035aa8c5bc7f7f226e59b9693c4f9cdb60cafabb5c53b571c0bca408d09d008b1f5b9a84f3f0&tinyid=144115226137375214&sdkappid=1400380763&contentType=json&apn=1&reqtime=1599727244893&tjg_id=144115226137375214-81235184";
+
+
+        var transform = function (str) {
+            // 创建目标对象
+            var $_REQUEST = new Object,
+                // 截取数据字符串
+                data = str.slice(str.indexOf("?") + 1, str.length - 1),
+                // 将数据字符串表现为数组
+                aParams = data.substr(1).split("&");
+            for (i = 0; i < aParams.length; i++) {
+                // 数据属性与数值分离
+                var aParam = aParams[i].split("=");
+                // 使用属性括号进行属性赋值
+                $_REQUEST[aParam[0]] = aParam[1]
+            }
+            console.log($_REQUEST);
+        }
+        transform(url);
+    </script>
+</body>
+
+</html>

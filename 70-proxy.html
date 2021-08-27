@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy</title>
+</head>
+
+<body>
+    <script>
+        function extend(person, base) {
+            var descriptor = Object.getOwnPropertyDescriptor(
+                base.prototype, "constructor"
+            );
+            console.log(descriptor)
+            base.prototype = Object.create(person.prototype);
+            var handler = {
+                construct: function (target, args) {
+                    console.log(target)
+                    console.log(args)
+
+                    
+                    var obj = Object.create(base.prototype);
+                    this.apply(target, obj, args);
+                    return obj;
+                },
+                apply: function (target, that, args) {
+                    console.log(args)
+                    person.apply(that, args);
+                    base.apply(that, args);
+                }
+            };
+            var proxy = new Proxy(base, handler);
+            descriptor.value = proxy;
+            Object.defineProperty(base.prototype, "constructor", descriptor);
+            return proxy;
+        }
+
+        var Person = function (name) {
+            console.log(arguments)
+            this.name = name
+        };
+
+        var Boy = extend(Person, function (name, age) {
+            this.age = age;
+        });
+
+        console.info(Boy)
+
+        Boy.prototype.sex = "M";
+
+        var Peter = new Boy("Peter", 13);
+        console.log(Peter.sex);  // "M"
+        console.log(Peter.name); // "Peter"
+        console.log(Peter.age);  // 13
+    </script>
+</body>
+
+</html>

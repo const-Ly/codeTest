@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>123</td>
+    </tr>
+  </table>
+</body>
+
+</html>
+
+<script>
+  // 写一个获取随机数的函数
+  function getRandom(min = 0.01, max = 100) {
+    return Number((Math.round((Math.random() * (max - min) + min) * 100) / 100).toFixed(2))
+  }
+
+  function newGetRandom(min = 0.01, max = 100, count) {
+    const newMax = max / count * 2
+    console.log(newMax)
+    return Number((Math.round((Math.random() * (newMax - min) + min) * 100) / 100).toFixed(2))
+  }
+
+
+  // 接收10 3，3个人分10元的红包
+  function getRedBag(amount, num) {
+    const arr = [];
+    const min = 0.01;
+    let maxValue = amount
+
+    while (num) {
+      let random = num == 1 ? maxValue : newGetRandom(min, maxValue, num)
+      num--
+      arr.push(Number(random))
+      maxValue = (maxValue - random).toFixed(2);
+    }
+
+    return arr
+  }
+
+  const result = getRedBag(10, 4);
+  console.log(result)
+  const addResult = result.reduce((res, item) => res += item, 0)
+  console.log(addResult)
+</script>

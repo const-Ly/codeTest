@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function myNew(fn, ...args) {
+        //     const obj = {};
+
+        //     obj.__proto__ = fn.prototype;
+
+        //     fn.call(obj, ...args)
+
+        //     return obj;
+        // }
+
+        //实现new
+
+        /*
+        
+         // 创建一个新对象且将其隐式原型指向构造函数原型
+         // 执行构造函数
+        // 返回该对象
+        */
+        var _new = function (fn, ...args) {
+            const obj = {}
+            obj.__proto__ = fn.prototype
+            let res = fn.apply(obj, args)
+            return (typeof res === "object" && res !== null) ? res : obj;
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function isObject(obj) {
+            return Object.prototype.toString.call(obj) === "[object Object]"
+        }
+
+        // function deepCopy(obj) {
+        //     let target = {};
+        //     if (isObject(obj)) {
+        //         for (let key in obj) {
+        //             if (isObject(obj[key])) {
+        //                 target[key] = deepCopy(obj[key])
+        //             } else {
+        //                 target[key] = obj[key]
+        //             }
+        //         }
+        //     }
+        //     return target
+        // }
+
+        function deepCopy(source) {
+            if (!isObject(source)) return source; // 非对象返回自身
+            const target = Array.isArray(source) ? [] : {};
+            for (var key in source) {
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    if (isObject(source[key])) {
+                        target[key] = deepCopy(source[key]); // 注意这里
+                    } else {
+                        target[key] = source[key];
+                    }
+                }
+            }
+            return target;
+        }
+
+        // 定义一个深拷贝函数  接收目标target参数
+        function deepClone(target) {
+            // 定义一个变量
+            let result;
+            // 如果当前需要深拷贝的是一个对象的话
+            if (typeof target === 'object') {
+                // 如果是一个数组的话
+                if (Array.isArray(target)) {
+                    result = []; // 将result赋值为一个数组，并且执行遍历
+                    for (let i in target) {
+                        // 递归克隆数组中的每一项
+                        result.push(deepClone(target[i]))
+                    }
+                    // 判断如果当前的值是null的话；直接赋值为null
+                } else if (target === null) {
+                    result = null;
+                    // 判断如果当前的值是一个RegExp对象的话，直接赋值    
+                } else if (target.constructor === RegExp) {
+                    result = target;
+                } else {
+                    // 否则是普通对象，直接for in循环，递归赋值对象的所有值
+                    result = {};
+                    for (let i in target) {
+                        result[i] = deepClone(target[i]);
+                    }
+                }
+                // 如果不是对象的话，就是基本数据类型，那么直接赋值
+            } else {
+                result = target;
+            }
+            // 返回最终结果
+            return result;
+        }
+
+
+        const obj = {
+            a: 1,
+            b: 2,
+            obj1: {
+                c: 1,
+                d: 2,
+                obj2: {
+                    e: 2,
+                    f: 3,
+                    obj3: {
+                        g: 4
+                    }
+                },
+                arr: [4, 5, 6]
+            },
+            arr: [1, 2, 3, 4, 5]
+        }
+
+        const obj1 = deepCopy(obj)
+
+        console.log(deepCopy(obj))
+        console.log(obj)
+    </script>
+</body>
+
+</html>

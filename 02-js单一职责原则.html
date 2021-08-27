@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="products"></div>
+  <div id="cart"></div>
+
+  <script>
+    function Product(id, description) {
+      this.getId = function () {
+        return id;
+      };
+      this.getDescription = function () {
+        return description;
+      };
+    }
+
+    function Cart(eventAggregator) {
+      var items = [];
+
+      this.addItem = function (item) {
+        items.push(item);
+      };
+    }
+
+    (function () {
+      var products = [new Product(1, "苹果"),
+          new Product(2, "香蕉"),
+          new Product(3, "桃子")
+        ],
+        cart = new Cart();
+
+      function addToCart() {
+        var productId = $(this).attr('id');
+        // var product = $.grep(products, function (x) {
+        //   return x.getId() == productId;
+        // })[0];
+        var product = products.filter(item => {
+          return item.getId() == productId;
+        })[0]
+
+        cart.addItem(product);
+
+        var newItem = $('<li></li>').html(product.getDescription()).attr('id-cart', product.getId()).appendTo(
+        "#cart");
+      }
+
+      products.forEach(function (product) {
+        var newItem = $('<li></li>').html(product.getDescription())
+          .attr('id', product.getId())
+          .dblclick(addToCart)
+          .appendTo("#products");
+      });
+    })();
+  </script>
+</body>
+
+</html>

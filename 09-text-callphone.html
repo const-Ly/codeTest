@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wincall Demo</title>
+</head>
+
+<body>
+  <div id="PHONE_BAR"></div>
+</body>
+<script type="text/javascript" src="./node_modules/cti-js-sdk/build/wincall/v2/wincall-latest.js"></script>
+<script>
+  var CTIPlus = CTI.CTIPlus;
+  //todo 这里需要开发者根据自己实际情况来实现token等信息获取
+  cti = new CTIPlus({
+    token: user.token,
+    agentPhone: user.phone,
+    agNo: user.agNo,
+    renderHtml: {},
+  });
+  cti.init(function () {
+    console.log("这是一个初始化后的回调")
+  });
+</script>
+
+</html>

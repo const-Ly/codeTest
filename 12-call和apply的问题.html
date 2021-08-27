@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    Function.prototype.call2 = function (context) {
+      var context = context || window;
+      context.fn = this;
+      // console.log(context.fn)
+      var args = [];
+      for (var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']');
+      }
+      console.log(args)
+      var result = eval('context.fn(' + args + ')');
+
+      delete context.fn
+      return result;
+    }
+    
+
+    var fn = function(){
+      
+    }
+    
+    fn.call2(null, 1,2,3,4,5)
+
+    // var f1 = function () {
+    //   console.log(1)
+    // };
+    // var f2 = function () {
+    //   console.log(2)
+    // };
+    // Function.prototype.call2.call2(Function.prototype.call2, f2) //2
+    // console.log(Function.prototype.call2)
+    // (Function.prototype.call2).call2(f1, f2); //1
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="">
+
+        //https://mp.weixin.qq.com/s/-aYn8cmy7kIEEGshPKv6Zg
+
+
+        // console.log((function () {
+        //     console.log(1);
+        //     setTimeout(function () {
+        //         console.log(2)
+        //     }, 1000)
+        //     setTimeout(function () {
+        //         console.log(3)
+        //     }, 0);
+        //     setTimeout(function () {
+        //         console.log(4)
+        //     }, 0);
+        //     console.log(5)
+
+        // })());
+
+
+
+        console.log((typeof null)); // undefined
+        console.log((typeof [])); // object
+
+        console.log((typeof Symbol()));// object
+        console.log((typeof 123n));// undefined
+
+        function foo() {
+            console.log(111);
+        };
+        console.log((typeof foo)); // function
+
+
+
+
+
+
+
+
+
+
+
+
+        Array.prototype.myReduce = function (fn) {
+            if (typeof fn !== 'function') {
+                throw new TypeError(`${fn} is not a function`);
+            }
+
+            const arr = this;
+            const len = arr.length;
+            let value;// 最终返回的值
+            let k = 0;// 当前索引
+
+            if (arguments.length >= 2) {
+                value = arguments[1];
+            } else {
+                // 当数组为稀疏数组时，判断数组当前是否有元素，如果没有索引加一
+                while (k < len && !(k in arr)) {
+                    k++;
+                }
+                // 如果数组为空且初始值不存在则报错
+                if (k >= len) {
+                    throw new TypeError('Reduce of empty array with no initial value');
+                }
+                value = arr[k++];
+            }
+            while (k < len) {
+                if (k in arr) {
+                    value = fn(value, arr[k], k, arr);
+                }
+                k++;
+            }
+
+            return value;
+        }
+
+
+
+        Function.prototype.bind1 = function (context, ...args) {
+            if (typeof this !== 'function') {
+                throw new TypeError('The bound object needs to be a function');
+            }
+
+            const self = this;
+            const fNOP = function () { };
+            const fBound = function (...fBoundArgs) {
+                // 指定this
+                // 当作为构造函数时，this 指向实例，此时 this instanceof fBound 结果为 true
+                return self.apply(this instanceof fNOP ? this : context, [...args, ...fBoundArgs]);
+            }
+
+            //  修改返回函数的 prototype 为绑定函数的 prototype,为了避免直接修改this的原型，所以新建了一个fNOP函数作为中介
+            if (this.prototype) {
+                fNOP.prototype = this.prototype;
+            }
+            fBound.prototype = new fNOP();
+
+            return fBound;
+        }
+
+    </script>
+</body>
+
+</html>

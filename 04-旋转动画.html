@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var cost = (function () {
+      var args = [];
+      return function () {
+        if (arguments.length === 0) { //求值
+          var money = 0;
+          for (var i = 0, l = args.length; i < l; i++) {
+            money += Number(args[i]);
+          }
+          return money;
+        } else {
+          // 保存
+          const parmas = Array.prototype.slice.call(arguments)
+          args.push(parmas.join(','));
+        }
+      }
+    })();
+    cost(100); // 第1天开销
+    cost(200); // 第2天开销
+    cost(300); // 第3天开销
+
+    console.log(cost()); // 600
+  </script>
+</body>
+
+</html>

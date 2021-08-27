@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function myIs(x, y) {
+        //     if (x === y) {
+        //         return x !== 0 || y !== 0 || 1 / x === 1 / y  //-0 +0
+        //     } else {
+        //         return x !== x && y !== y // NaN
+        //     }
+        // }
+
+
+        // 1. [] == ![]结果是什么？为什么？
+        // 解析:
+        // == 中，左右两边都需要转换为数字然后进行比较。
+        // []转换为数字为0。
+        // ![] 首先是转换为布尔值，由于[]作为一个引用类型转换为布尔值为true,
+        // 因此![]为false，进而在转换成数字，变为0。
+        // 0 == 0 ， 结果为true
+
+
+        function Parent2() {
+            this.name = 'parent2';
+            this.play = [1, 2, 3]
+        }
+
+        function Child2() {
+            this.type = 'child2';
+        }
+        Child2.prototype = new Parent2();
+
+        var s1 = new Child2();
+        var s2 = new Child2();
+        s1.play.push(4);
+        console.log(s1.play, s2.play);
+    </script>
+</body>
+
+</html>

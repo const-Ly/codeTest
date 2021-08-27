@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "cti-js-sdk": "^3.6.20"
+  }
+}

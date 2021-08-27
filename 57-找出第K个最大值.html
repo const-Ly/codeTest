@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const findKthLargest = (nums, k) => {
+            const n = nums.length;
+
+            const quick = (l, r) => {
+                if (l > r) return;
+                let random = Math.floor(Math.random() * (r - l + 1)) + l; // 随机选取一个index
+                swap(nums, random, r); // 将它和位置r的元素交换，让 nums[r] 作为 pivot 元素
+                /**
+                 * 我们选定一个 pivot 元素，根据它进行 partition
+                 * partition 找出一个位置：它左边的元素都比pivot小，右边的元素都比pivot大
+                 * 左边和右边的元素的是未排序的，但 pivotIndex 是确定下来的
+                */
+                let pivotIndex = partition(nums, l, r);
+                /**
+                 * 我们希望这个 pivotIndex 正好是 n-k
+                 * 如果 n - k 小于 pivotIndex，则在 pivotIndex 的左边继续找
+                 * 如果 n - k 大于 pivotIndex，则在 pivotIndex 的右边继续找
+                 */
+                if (n - k < pivotIndex) {
+                    quick(l, pivotIndex - 1);
+                } else {
+                    quick(pivotIndex + 1, r);
+                }
+                /**
+                 * n - k == pivotIndex ，此时 nums 数组被 n-k 分成两部分
+                 * 左边元素比 nums[n-k] 小，右边比 nums[n-k] 大，因此 nums[n-k] 就是第K大的元素
+                 */
+            };
+
+            quick(0, n - 1); // 让n-k位置的左边都比 nums[n-k] 小，右边都比 nums[n-k] 大
+            return nums[n - k];
+        };
+
+        function partition(nums, left, right) {
+            let pivot = nums[right];             // 最右边的元素作为 pivot 元素
+            let pivotIndex = left;               // pivotIndex 初始为 left
+            for (let i = left; i < right; i++) { // 逐个考察元素，和 pivot 比较
+                if (nums[i] < pivot) {             // 如果当前元素比 pivot 小
+                    swap(nums, i, pivotIndex);       // 将它交换到 pivotIndex 的位置
+                    pivotIndex++;
+                }
+            }                                    // 循环结束时，pivotIndex左边都是比pivot小的
+            swap(nums, right, pivotIndex);       // pivotIndex和right交换，更新pivot元素
+            return pivotIndex;                   // 返回 pivotIndex 下标
+        }
+
+        function swap(nums, p, q) {
+            const temp = nums[p];
+            nums[p] = nums[q];
+            nums[q] = temp;
+        }
+
+
+        // 
+        function sort(arr, k) {
+            var temp;
+            //如果比较完备提前结束比较。（判断，如果本次比较没有移动任何元素，那么说明已经比较完成）
+            for (var i = 0; i < a.length - 1; i++) {//这里不减1 后面轮数就+1 这是不对的 因为数组下标0开始
+                //开闭原则。（写在第一个for循环里，是为了，每轮比较初始化bool变量变为true。）
+                var bool = true;
+                for (var j = 0; j < a.length - 1 - i; j++) {  //每轮比较少比较一次。（每一轮都会比较出一个最大值，然后后一轮没有必要再比较了，所以没比较一轮，就少比较一次。。。）
+                    if (a[j] > a[j + 1]) {
+                        temp = a[j];
+                        a[j] = a[j + 1];
+                        a[j + 1] = temp;
+                        bool = false;
+                    }
+                }
+                //bool这个变量默认值为true;如果本轮比较有一对元素相互交换位置，那么也不能跳出循环。
+                //但是，如果本轮比较没有任何元素相互交换位置，那么说明已经比较完成，可以跳出循环。
+                if (bool) {
+                    break;
+                }
+            }
+            return setIndex(arr, k)
+            // return arr;
+        }
+
+        function setIndex(arr, k) {
+            let obj = {}
+            arr.forEach((item, index) => {
+                if (!obj[index]) {
+                    obj[index] = item
+                }
+            })
+            // console.log(obj)
+            return obj[k - 1]
+        }
+
+
+        console.log(findKthLargest([2, 2, 2, 5, 5, 7, 8, 6, 23, 54, 76, 43], 2))
+        console.log(sort([2, 2, 2, 5, 5, 7, 8, 6, 23, 54, 76, 43], 2))
+
+    </script>
+</body>
+
+</html>

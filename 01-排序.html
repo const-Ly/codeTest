@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .one {
+                height: 3000px;
+            }
+
+            .one li {
+                width: 300px;
+                overflow: hidden;
+                /*超出部分隐藏*/
+                white-space: nowrap;
+                /*不换行*/
+                text-overflow: ellipsis;
+                /*超出部分文字以...显示*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul class="one">
+            <li>市人社部门举办全市人社系统职业指导培训班</li>
+            <li>关于组织参加“六安职业技术学院校园招聘会”的通知</li>
+            <li>芜湖市人力资源市场"端午节"放假通知</li>
+            <li>我市“人力资源市场供求状况分析”第七次荣获人社部“五星”奖</li>
+        </ul>
+    </body>
+
+    </html>
+    <script>
+        const arr = [{
+                name: 'liuyong1',
+                age: 25
+            },
+            {
+                name: 'liuyong2',
+                age: 22
+            },
+            {
+                name: 'liuyong3',
+                age: 23
+            },
+            {
+                name: 'liuyong4',
+                age: 26
+            }
+        ]
+
+        function compare(obj1, obj2) {
+            const value1 = obj1.age
+            const value2 = obj2.age
+            if (value1 - value2 > 0) return 1
+            if (value1 - value2 < 0) return -1
+            if (value1 - value2 === 0) return 0
+        }
+
+        let clientY = 0;
+        const ul = document.getElementsByClassName('one')[0]
+
+        ul.onmousewheel = function (e) {
+            if (e.wheelDeltaY > 0) {
+                console.log('上滑')
+            } else {
+                console.log('下滑')
+            }
+            clientY = e.clientY;
+        }
+
+        console.log(arr.sort((a, b) => {
+            return a.age - b.age
+        }));
+    </script>
+</body>
+
+</html>

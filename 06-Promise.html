@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function MyPromise(executor) {
+      // 添加属性
+      this.promiseState = 'Pending' // 状态
+      this.promiseResult = null // 结果
+      this.callback = [] // 异步回调保存，关键代码
+      const self = this
+      // resolve函数
+      function resolve(data) {
+        // 1.设置对象状态promiseState
+        // 2.设置对象结果值promiseResult
+        // 3.修改this的指向
+        // 4.添加判断，只能在pending状态下执行。
+        // 5.执行异步回调函数
+        if (self.promiseState !== 'Pending') return
+        self.promiseState = 'fulfilled' // resolved
+        self.promiseResult = data
+        //执行异步回调函数，关键代码
+        self.callback.forEach(element => {
+          element.onResolved(data)
+        });
+      }
+      //  reject函数
+      function reject(data) {
+        // 1.设置对象状态promiseState
+        // 2.设置对象结果值promiseResult
+        // 3.修改this的指向
+        // 4.添加判断，只能在pending状态下执行。
+        // 5.执行异步回调函数
+        if (self.promiseState !== 'Pending') return
+        self.promiseState = 'rejected' // resolved
+        self.promiseResult = data
+        //执行异步回调函数，关键代码
+        self.callback.forEach(element => {
+          element.onRejected(data)
+        });
+
+      }
+      try {
+        executor(resolve, reject) // 【同步调用】执行器函数   
+      } catch (error) {
+        // 修改promise的状态为reject
+        reject(error)
+      }
+
+    }
+
+    MyPromise.prototype.then = function (onResolved, onRejected) {
+      // 1.根据状态，调用对应的回调函数
+      // 2.传递结果值
+      if (this.promiseState === 'fulfilled') {
+        onResolved(this.promiseResult)
+      }
+      if (this.promiseState === 'rejected') {
+        onRejected(this.promiseResult)
+      }
+      //异步不改变状态，只能暂时保存异步回调函数，在对应状态里执行回调，关键代码
+      if (this.promiseState === 'Pending') {
+        this.callback.push({
+          onResolved,
+          onRejected
+        })
+      }
+    }
+
+    MyPromise.resolve = function(value) {
+      return new MyPromise((resolve, reject) => {
+        if(value instanceof MyPromise) {
+          value.then(v => {
+            resolve(v)
+          }, r => {
+            reject(v)
+          })
+        } else {
+          resolve(value)
+        }
+      })
+    }
+
+    MyPromise.all = function (promises) {
+      return new MyPromise((resolve, reject) => {
+        let count = 0; //计数
+        let arr = [] //存结果，主要顺序
+        let len = promises.length
+        for (let i = 0; i < len; i++) {
+          promises[i].then(v => {
+            count++
+            arr[i] = v
+            // 等待全部返回，统一修改状态
+            if (count === len) {
+              resolve(arr)
+            }
+          }, r => {
+            reject(r)
+          })
+        }
+      })
+    }
+    // 示例
+    let p1 = new MyPromise((resolve, reject) => {
+      resolve('OK')
+    })
+    let p2 = MyPromise.resolve('OK1')
+    let p3 = MyPromise.resolve('OK2')
+    let result = MyPromise.all([p1, p2, p3])
+    console.log(result)
+    result.then(res => {
+      console.log(res)
+    })
+
+    // const p = new MyPromise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve('ok')
+    //   }, 1000)
+    // })
+
+    // p.then(res => {
+    //   console.log(res)
+    // })
+  </script>
+</body>
+
+</html>

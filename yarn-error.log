@@ -1,0 +1,36 @@
+Arguments: 
+  /usr/local/bin/node /Users/liuyong/.npm-global/bin/yarn --registry=http://nexus.shuiditech.com/repository/npm-all/ add cti-js-dk
+
+PATH: 
+  /Users/liuyong/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/liuyong/.npm-global/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://nexus.shuiditech.com/repository/npm-all/cti-js-dk: Not found
+      at Request.params.callback [as _callback] (/Users/liuyong/.npm-global/lib/node_modules/yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/Users/liuyong/.npm-global/lib/node_modules/yarn/lib/cli.js:140662:22)
+      at Request.emit (events.js:375:28)
+      at Request.<anonymous> (/Users/liuyong/.npm-global/lib/node_modules/yarn/lib/cli.js:141634:10)
+      at Request.emit (events.js:375:28)
+      at IncomingMessage.<anonymous> (/Users/liuyong/.npm-global/lib/node_modules/yarn/lib/cli.js:141556:12)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

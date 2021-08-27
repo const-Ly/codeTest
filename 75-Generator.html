@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // https://mp.weixin.qq.com/s?__biz=MzI0MzU5Nzg0Ng==&mid=2247483755&idx=1&sn=fff604dc9113a3eccbeeb63eaa62c598&chksm=e96bd612de1c5f04f896ef1ae07815fd0bc03df4d46a3332a34ecd4af0480f5b55d2b8326705&scene=21#wechat_redirect
+
+
+        // let y, z, d;
+
+        // function* foo(x) {
+        //     y = 2 * (yield (x + 1)); //12
+        //     z = yield (y / 3); // 4
+        //     return (x + y + z); // 5+ 12+ 4 
+        // }
+        // // const a = foo(5);
+        // // console.log(a.next());
+        // // console.log(a.next());
+        // // console.log(a.next());
+
+        // const b = foo(5);
+        // console.log(b)
+        // console.log(b.next());
+        // console.log(b.next(12));
+        // console.log(b.next(13));
+
+
+        // console.log(y)
+        // console.log(z)
+
+
+
+        let z = 1;
+        function* foo() {
+            const x = yield 2;
+            z++;
+            const y = yield (x * z);
+            console.log(x, y, z);
+        }
+        const a = foo();
+        const b = foo();
+
+        let val1 = a.next().value; // 2
+        console.log(val1); // {value: 2, done: false}
+
+        let val2 = b.next().value; // 2
+        console.log(val2);// {value: 2, done: false}
+
+        val1 = a.next(val2 * 10).value;
+        console.log(val1);
+
+        val2 = b.next(val1 * 5).value;
+        console.log(val2);
+
+        a.next(val2 / 2);
+
+        b.next(val1 / 4);
+
+    </script>
+</body>
+
+</html>

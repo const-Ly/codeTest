@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // setTimeout(function () {
+        //     console.log('1')
+        // },0);
+
+        // new Promise(function (resolve) {
+        //     console.log('2');
+        //     resolve();
+        // }).then(function () {
+        //     console.log('3')
+        // });
+        // console.log('4');
+
+
+
+        console.log('1');
+        setTimeout(function () {
+            console.log('2');
+            // process.nextTick(function () {
+            //     console.log('3');
+            // })
+            new Promise(function (resolve) {
+                console.log('4');
+                resolve();
+            }).then(function () {
+                console.log('5')
+            })
+        })
+        // process.nextTick(function () {
+        //     console.log('6');
+        // })
+        new Promise(function (resolve) {
+            console.log('7');
+            resolve();
+        }).then(function () {
+            console.log('8')
+        })
+
+        setTimeout(function () {
+            console.log('9');
+            // process.nextTick(function () {
+            //     console.log('10');
+            // })
+            new Promise(function (resolve) {
+                console.log('11');
+                resolve();
+            }).then(function () {
+                console.log('12')
+            })
+        })
+
+        // function create(obj) {
+        //     let object = {}
+        //     object.__proto__ = obj
+        //     return object
+        // }
+
+        // function create1 (obj) {
+        //     function Fn (){
+        //     }
+        //     Fn.prototype = obj
+        //     let object = new Fn()
+        //     return object
+        // }
+
+        // let a = {a: 1}
+        // let b = {a: 1}
+        // let c = create(null)
+        // let d = create1(null)
+        // console.log(c)
+        // console.log(d)
+
+        // let arr = [1,2,3,4,5]
+        // let maxNum = Math.max.apply(null, arr);
+        // // console.log(maxNum)
+
+        // function fn(a){
+        //     console.log(a)
+        //     console.log(arguments)
+        // }
+
+        // fn(arr)
+        // fn.apply(null, arr)
+
+
+        // Function.prototype.myCall = function (context, ...args) {
+        //     if(!context) {
+        //         context = window
+        //     }
+        //     let fn = Symbol();
+        //     context[fn] = this
+        //     const result = context[fn](...args)
+        //     delete context[fn]
+        //     return result
+        // }
+
+        // let person = {
+        //     name: 1
+        // }
+
+        // fn.myCall(person, 1, 2, 3, 4)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

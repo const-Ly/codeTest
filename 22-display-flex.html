@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .parent {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .child {
+            width: 49%;
+            border: 1px solid red;
+        }
+
+        .image {
+            width: 100%;
+            height: 374px;
+        }
+
+        #outer {
+            padding: 20px;
+            background: #616161;
+        }
+
+        #inner {
+            width: 100px;
+            height: 100px;
+            background: #757575;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child">
+            <img class="image" src="http://bfs.biyao.com/group1/M00/1A/33/wKhj1FvWgiWAa8MEAABRjdaJiZg309.jpg" alt="">
+            <div>dasdadsa</div>
+        </div>
+        <div class="child" style="height: 200px;">dasdasdas</div>
+        <div class="child">dasdasdas</div>
+        <div class="child">dasdasdas</div>
+
+        <div id="outer">
+            <div id="inner"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // const $inner = document.querySelector('#inner')
+    // const $outer = document.querySelector('#outer')
+
+    // function handler() {
+    //     console.log('click') // 直接输出
+
+    //     Promise.resolve().then(_ => console.log('promise')) // 注册微任务
+
+    //     setTimeout(_ => console.log('timeout')) // 注册宏任务
+
+    //     requestAnimationFrame(_ => console.log('animationFrame')) // 注册宏任务
+
+    //     $outer.setAttribute('data-random', Math.random()) // DOM属性修改，触发微任务
+    // }
+
+    // new MutationObserver(_ => {
+    //     console.log('observer')
+    // }).observe($outer, {
+    //     attributes: true
+    // })
+
+    // $inner.addEventListener('click', handler)
+    // $outer.addEventListener('click', handler)
+
+    // setTimeout(_ => console.log(4))
+
+    // async function main() {
+    //     console.log(1)
+    //     await Promise.resolve()
+    //     console.log(3)
+    // }
+
+    // main()
+
+    // console.log(2)
+
+
+    let init = (...args) => args.reduce((ele1, ele2) => ele1 + ele2, 0)
+    let step2 = (val) => val + 2
+    let step3 = (val) => val + 3
+    let step4 = (val) => val + 4
+
+
+    const compose = function (...args) {
+        let length = args.length
+        let count = length - 1
+        let result
+        return function f1(...arg1) {
+            result = args[count].apply(this, arg1)
+            if (count <= 0) {
+                count = length - 1
+                return result
+            }
+            count--
+            return f1.call(null, result)
+        }
+    }
+
+
+    let steps = [step4, step3, step2, init]
+    let composeFunc = compose(...steps)
+
+    console.log(composeFunc(1, 2, 3))
+</script>

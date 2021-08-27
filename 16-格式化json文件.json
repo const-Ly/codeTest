@@ -1,0 +1,129 @@
+1. 红包弹窗接口 （新增）
+
+参数：待定
+
+返回：
+{
+    data：{
+        isShow: 1, // 是否显示，1显示 0不显示
+        redPacketMoney: '88', // 红包金额
+        bgImg: '**', // 背景图
+        btnImg: '', // 按钮图片
+        btnText: '', // 按钮文案
+        redPacketId: '', // 红包id
+        shareData：{
+            shareTitle："", // 小程序分享标题
+            shareImg: "", // 小程序分享图片
+        }
+    },  
+    success: 1
+}
+
+2. 广告位接口（新增）
+
+参数：待定
+
+返回：
+{
+    data: {
+        isShow: 1, // 是否显示。1显示 0 不显示
+        redPacketMoney: '88', // 红包金额
+        bgImg: '', // 广告位图片 
+        redPacketId: '', // 红包id
+        shareData：{
+            shareTitle："", // 小程序分享标题
+            shareImg: "", // 小程序分享图片
+        }
+    },
+    success: 1
+}
+
+3. 订单详情页：红包入口接口（新增）
+
+参数：无
+
+返回：
+
+{
+    data: {
+        redPacketMoney: '88', // 红包金额
+        redPacketId: '', // 红包id
+        isShow: 1, // 是否显示 1显示 0不显示
+    },
+    success: 1
+}
+
+4. 订单详情页：点击红包入口校验接口（新增）
+
+参数：红包id
+
+返回：
+
+{
+    data: {
+        status: 1, // 红包状态 1红包未过期也未被领完，且用户未在该红包领取过特权金，2 红包未过期也未被领完，但用户在该红包领取过特权金，3过期，4领完
+        toast: "", // 已过期toast:来晚啦，红包已过期;    已领完toast:来晚啦，红包已领完   其余状态为空串
+    },
+    success: 1
+}
+
+6. 个人中心页（修改）
+
+接口：/privilege/getActivityEntranceIsShown.do
+
+参数：无
+
+返回：
+
+{
+    data: {
+        activetyList: [
+            ...
+            privilegeEntry: 1, // 写死返回1, 未登录和登陆都是一样
+            redPacketEntry: {
+                isShow: 1, // 是否显示 1显示 0不显示
+                redPacketId: '', // 红包id
+                redPacketMoney: '88', // 红包金额
+            }
+        ]
+    },
+    success: 1
+}
+
+7. 拆红包页未登录（新增）
+
+接口：XXX
+
+参数：红包Id（待定）
+
+返回：
+
+{
+    data: {
+        "avatarUrl":"***", // 头像地址
+        "nickName":"风***克", // 用户昵称
+        "btnText": "发红包啦~快来拆", // 拆红包按钮文案
+    },
+    success: 1
+}
+
+7. 拆红包页已登录（新增）
+
+接口：XXX
+
+参数：红包Id（待定）
+
+返回：
+
+{
+    data: {
+        "identity": 1, // 0非本人  1本人
+        "status": 1, // 红包状态 1未过期，2已过期，3已领完，4已领取，5异常情况
+        "redPacketId":"", // 红包id
+        "stepSwitch": 1, // 步数换的开关状态 1开启，0关闭  
+        "jumpPage": 1, // 具体跳转到哪个页面。0不跳转（老客不下发通用特权金） 1下发成功页 2领取成功页，3普通订单确认页 4一起拼订单确认页
+        "orderId":"***", // 订单id
+        "toast":"领取成功", // toast提示 领取成功||您的账户已有特权金啦，快去使用吧||您有冻结中的特权金，请尽快完成支付
+    },
+    success: 1
+}

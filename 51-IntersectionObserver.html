@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .h1 {
+            text-align: center;
+            position: fixed;
+            top: 0;
+        }
+
+        .head {
+            width: 100%;
+            height: 50px;
+            background: yellowgreen;
+            position: fixed;
+            top: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: aqua;
+            line-height: 50px;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background: goldenrod;
+            position: absolute;
+            top: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 class="h1">IntersectionObserver</h3>
+    <div id="head" class="head"></div>
+    <div id="item" class="item"></div>
+    <script>
+        let item = document.querySelector("#item");
+        let head = document.querySelector("#head");
+        let body = document.querySelector("body");
+        let div = document.getElementsByTagName("div")
+
+        let io = new IntersectionObserver(function (res) {
+            /**
+             * res是目标元素的信息,具体说下本次讲解的
+             * time：可见性发生变化的时间，是一个高精度时间戳，单位为毫秒
+             * target：被观察的目标元素，是一个 DOM 节点对象
+             * rootBounds：根元素的矩形区域的信息，getBoundingClientRect()方法的返回值，如果没有根元素（即直接相对于视口滚动），则返回null
+             * boundingClientRect：目标元素的矩形区域的信息
+             * intersectionRect：目标元素与视口（或根元素）的交叉区域的信息
+             * intersectionRatio：目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0
+             */
+             head.innerHTML = res[0].intersectionRatio;
+            console.log(res)
+            // if (res[0].intersectionRatio > 0) {
+            //     head.innerHTML = "可见" + res[0].intersectionRatio;
+            // } else {
+            //     head.innerHTML = "不可见" + res[0].intersectionRatio;
+            // }
+        }, {
+            threshold: [0, 0.25, 0.5, 0.75, 1]
+        });
+
+        io.observe(item)
+    </script>
+</body>
+
+</html>

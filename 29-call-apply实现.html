@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用ES6的方法来实现一个ES5的方法  不合理
+        Function.prototype.myCall1 = function (context, ...args) {
+            console.info(args)
+            console.info(arguments)
+            if (context === Function.prototype) {
+                return undefined // 自己调自己，如：Function.prototype.myCall()
+            }
+            context = context || window
+            const fn = Symbol()
+            context[fn] = this
+            const result = context[fn](...args)
+            delete context[fn]
+            return result
+        }
+
+        Function.prototype.myCall2 = function (context) {
+            if (context === Function.prototype) {
+                return undefined // 自己调自己，如：Function.prototype.myCall()
+            }
+            context = context || window
+
+            context.fn = this
+            var args = []
+            for (var index = 1; index < arguments.length; index++) {
+                args.push("arguments[" + index + "]")
+            }
+            console.log(arguments)
+            console.log(args)
+            var result = eval("context.fn(" + args + ")")
+            // var result = context.fn(...arguments)
+            return result
+        }
+
+        function a(a, b, c, d) {
+            // console.info(arguments)
+            console.log(a)
+            console.log(b)
+            console.log(c)
+            console.log(d)
+        }
+        a.myCall2(null, 1, 2, 3, 4)
+
+
+        // if (!Function.prototype.bind) {
+        Function.prototype.myBind = function (oThis) {
+            if (typeof this !== "function") {
+                // closest thing possible to the ECMAScript 5 internal IsCallable function
+                throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+            }
+
+            var aArgs = Array.prototype.slice.call(arguments, 1),
+                fToBind = this,
+                fNOP = function () { },
+                fBound = function () {
+                    return fToBind.apply(this instanceof fToBind && oThis ?
+                        this :
+                        oThis || window,
+                        aArgs.concat(Array.prototype.slice.call(arguments)));
+                };
+
+            fNOP.prototype = fToBind.prototype;
+            fBound.prototype = new fNOP();
+            return fBound;
+        };
+        // }
+
+        function foo(x) {
+            this.b = 100
+            // console.log(this.a)
+            return this.a + x
+        }
+
+        var func = foo.myBind(window)
+
+        console.log(func)
+
+        // function func(){
+        //     this.b = 100
+        //     return this.a + 20
+        // }
+
+        // console.log(func())
+        var za = new func({ a: 1 }, 20)
+        console.log(za.b)
+            // console.log(za.a)
+    </script>
+</body>
+
+</html>

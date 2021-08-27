@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 86px;
+            margin: 200px auto;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+
+        div>ul {
+            /*设置ul的宽度为2倍div的宽度*/
+            width: 200%;
+            list-style: none;
+            /*动画属性*/
+            animation: imgMove 5s linear infinite;
+
+        }
+
+        /* 暂停动画 */
+        div>ul:hover {
+            animation-play-state: paused;
+        }
+
+        div>ul>li {
+            width: 200px;
+            float: left;
+        }
+
+        div img {
+            width: 100%;
+        }
+
+        /*创建动画*/
+        @keyframes imgMove {
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(-882px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li><img src="https://dummyimage.com/201x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/202x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/203x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/204x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/205x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/206x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/207x200" alt="" /></li>
+            <!--将需要轮播的图片在复制一份-->
+            <li><img src="https://dummyimage.com/201x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/202x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/203x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/204x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/205x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/206x200" alt="" /></li>
+            <li><img src="https://dummyimage.com/207x200" alt="" /></li>
+        </ul>
+    </div>
+</body>
+
+</html>
