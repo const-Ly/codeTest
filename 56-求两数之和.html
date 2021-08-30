@@ -9,7 +9,6 @@
 
 <body>
     <script>
-
         // var twoSum = function (nums, target) {
         //     let i = nums.length;
         //     while (i > 1) {
@@ -21,27 +20,11 @@
         //     }
         // };
 
-        // var twoSum = function (nums, target) {
-        //     const map = new Map();
-        //     for (let i = 0; i < nums.length; i++) {
-        //         const res = target - nums[i];
-        //         if (map.has(res)) {
-        //             return [map.get(res), i];
-        //         } else {
-        //             console.log(nums[i])
-        //             map.set(nums[i], i);
-        //         }
-        //     }
-        // }
-
-        // var res = twoSum([1, 4, 6, 5, 8], 10)
-        // console.log(res)
-
-        function twoSum(nums, target) {
-            const map = new Map()
-            for (var i = 0; i < nums.length - 1; i++) {
-                let res = target - nums[i];
-                if(map.has(res)) {
+        var twoSum = function (nums, target) {
+            const map = new Map();
+            for (let i = 0; i < nums.length; i++) {
+                const res = target - nums[i];
+                if (map.has(res)) {
                     return [map.get(res), i];
                 } else {
                     map.set(nums[i], i);
@@ -49,8 +32,79 @@
             }
         }
 
-        
+        // // 获取两数之和 [1,4,7,9] // 13
+        function getTwoResult(arr, target) {
+            const myMap = new Map()
+            for (let i = 0; i < arr.length; i++) {
+                let res = target - arr[i]
+                if (myMap.has(res)) {
+                    return [myMap.get(res), i]
+                } else {
+                    myMap.set(arr[i], i) // {4: 1}
+                }
+            }
+        }
 
+        // 获取两数之和 [1,4,7,9] // 13
+        function getTwoResult1(arr, target) {
+            const myMap = {}
+            for (let i = 0; i < arr.length; i++) {
+                let res = target - arr[i]
+                if (myMap[res]) {
+                    return [myMap[res], i]
+                } else {
+                    myMap[arr[i]] = i // {4: 1}
+                }
+            }
+        }
+
+        // const result = getTwoResult1([1, 4, 7, 9], 13)
+        // console.log(result)
+
+        // localStorage.setItem('show', false)
+        // console.log(localStorage)
+        // var a = localStorage.show || '显示'
+        // console.log(a)
+
+        let obj = {
+            foo: {
+                bar: {
+                    name: 'biz'
+                }
+            }
+        }
+
+        const result = get(obj, 'foo.bar.name')
+        console.log(result) // 输出：biz
+        // obj = {}
+        // get(obj, 'foo.bar.name') // 输出：undefined
+        // get(obj, 'foo.bar.name', 'biz') // 输出：biz//  函数如下：
+
+
+        function get(obj, path, defaultValue) {
+            let keys = path.split('.')
+            if (defaultValue) {
+                let key = keys.shift()
+                if (keys.length === 0) {
+                    obj[key] = defaultValue
+                } else {
+                    obj[key] = {}
+                    get(obj[key], keys.join('.'), defaultValue)
+                }
+                return obj
+            } else {
+                const value = obj[keys[0]]
+                if (!path.includes('.')) {
+                    return obj[path]
+                } else {
+                    if (!value) {
+                        return value
+                    }
+                    keys.shift()
+                    return get(value, keys.join('.'))
+                }
+            }
+        }
     </script>
 </body>
 
