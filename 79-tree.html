@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      上面的数据结构中，不同层级的key可能会相同. 实现一个方法，调用时更新上面数组的key值，
+      使所有的key对应的值变更为新的随机数，并且保证更新前相同的key更新为新值后也依然相同即可
+    */
+    const arr = [{
+      key: 0.123123,
+      child: {
+        key: 0.3213313,
+        child: {
+          key: 0.123123,
+          child: {
+            key: 0.723793,
+          }
+        }
+      }
+    }, {
+      key: 0.788798,
+      child: {
+        key: 0.312308,
+        child: {
+          key: 0.123123,
+          child: {
+            key: 0.3213313,
+            child: {
+              key: 0.723793
+            }
+          }
+        }
+      }
+    }]
+
+    // 最终结果
+    const arr1 = [{
+      "key": "0.707047",
+      "child": {
+        "key": "0.641897",
+        "child": {
+          "key": "0.707047",
+          "child": {
+            "key": "0.366153"
+          }
+        }
+      }
+    }, {
+      "key": "0.555436",
+      "child": {
+        "key": "0.701561",
+        "child": {
+          "key": "0.707047",
+          "child": {
+            "key": "0.641897",
+            "child": {
+              "key": "0.366153"
+            }
+          }
+        }
+      }
+    }]
+
+    function isObject(obj) {
+      return Object.prototype.toString.call(obj) === '[object Object]'
+    }
+
+    function updateKey(arr = []) {
+      let keyMaps = {};
+
+      function getKey(obj) {
+        const random = Math.random().toFixed(6);
+        if (!keyMaps[obj.key]) {
+          keyMaps[obj.key] = random
+          obj['key'] = random
+        } else {
+          obj['key'] = keyMaps[obj.key]
+        }
+        if (isObject(obj.child)) {
+          getKey(obj.child)
+        }
+      }
+      for (let i = 0; i < arr.length; i++) {
+        const obj = arr[i]
+        getKey(obj)
+      }
+      console.log(keyMaps)
+    }
+
+    updateKey(arr)
+    console.log(JSON.stringify(arr))
+  </script>
+</body>
+
+</html>

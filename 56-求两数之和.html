@@ -74,7 +74,7 @@
             }
         }
 
-        const result = get(obj, 'foo.bar.name')
+        const result = getObj(obj, 'foo.bar.name')
         console.log(result) // 输出：biz
         // obj = {}
         // get(obj, 'foo.bar.name') // 输出：undefined
@@ -105,6 +105,66 @@
                 }
             }
         }
+
+
+        function getObj(obj, path, defaultVal) {
+            if (path) {
+                const childArr = path.split('.');
+                if (childArr.length) {
+                    try {
+                        const result = this.getItem(obj, childArr, 0)
+                        // console.log('第一步', this.getItem(obj, childArr, 0));
+                        return result
+                    } catch (e) {
+                        if (defaultVal !== undefined) {
+                            this.setItem(obj, childArr, defaultVal);
+                            console.log('第三步', this.getItem(obj, childArr, 0));
+                        } else {
+                            console.log('第二步 ', undefined);
+                        }
+                    }
+                }
+            }
+        }
+        // 赋值方法
+        function setItem(obj, arr, dv) {
+            arr.reduce((cur, key, index) => {
+                if (!cur[key]) {
+                    cur[key] = {};
+                }
+                if (index === arr.length - 1) {
+                    cur[key] = dv;
+                }
+                return cur[key];
+            }, obj);
+        }
+        // 取值方法
+        // 方法一：
+        function getItem(obj, arr) {
+            let v = '';
+            const result = arr.reduce((cur, key, index) => {
+                // if (index === arr.length - 1) {
+                //     return cur[key];
+                // } else {
+                //     return cur[key];
+                // }
+                console.log(index)
+                return cur[key];
+            }, obj);
+            console.log(result)
+            return result;
+        }
+
+        // 方法二：
+        // function getItem(obj, arr, index) {
+        //     // [foo, bar, name]   obj:{}  obj: {foo}
+        //     if (arr.length - 1 !== index) {
+        //         const tempObj = obj[arr[index]];
+        //         console.log('tempObj',tempObj, index)
+        //         return this.getItem(tempObj, arr, index + 1);
+        //     }
+        //     return obj[arr[index]];
+        // }
     </script>
 </body>
 

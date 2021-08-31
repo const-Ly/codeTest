@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    例子：https%253A%252F%252Fwww.baidu.com%252F%253Ftest%253D1
+    条件: 被编码次数未知
+    结果: https://www.baidu.com/?test=1
+    **/
+
+    const url = 'https%253A%252F%252Fwww.baidu.com%252F%253Ftest%253D1'
+
+    function decode(url) {
+      while (url !== decodeURIComponent(url)) {
+        url = decodeURIComponent(url)
+      }
+      return url
+    }
+
+    console.log(decode(url))
+
+    function aa(){
+      var greet = 'Hello';
+      var toGreet = [].filter.call(greet, function (element, index) {
+        return index > 5;
+      });
+      console.log(toGreet);
+    };
+
+    aa()
+  </script>
+</body>
+
+</html>
