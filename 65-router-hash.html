@@ -71,9 +71,8 @@
         var wrap = document.querySelector('.router-wrap');
 
         window.Router = new Router();
-        console.log(window.Router === Router)
         Router.route('/', function () {
-            wrap.style.backgroundColor = '#fefefe';
+            wrap.style.backgroundColor = 'yellow';
         });
 
         Router.route('/black', function () {

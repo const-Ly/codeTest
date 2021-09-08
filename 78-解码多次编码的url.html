@@ -25,9 +25,24 @@
       return url
     }
 
-    console.log(decode(url))
+    function decode1(url) {
+      let count = 0;
+      while (true) {
+        if (url !== decodeURIComponent(url)) {
+          count++
+          url = decodeURIComponent(url)
+        } else {
+          return {
+            url,
+            count
+          }
+        }
+      }
+    }
 
-    function aa(){
+    console.log(decode1(url))
+
+    function aa() {
       var greet = 'Hello';
       var toGreet = [].filter.call(greet, function (element, index) {
         return index > 5;

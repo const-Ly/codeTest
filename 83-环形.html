@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas的使用</title>
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      /**
+       * W：宽
+       * H：高
+       * borderWidth：border宽
+       * borderColor：border颜色
+       * color：背景颜色
+       * textColor：文字颜色
+       * fontText：圆内的文字
+       *  */
+      function createCanvas(W, H, borderWidth, borderColor, color, textColor, fontText) {
+        var canvas = document.createElement('canvas')
+        canvas.width = W
+        canvas.height = H
+        var ctx = canvas.getContext('2d')
+        ctx.beginPath()
+        ctx.arc((W + borderWidth) / 2, (H + borderWidth) / 2, 30, 0, Math.PI * 2, true)
+        ctx.closePath()
+        // 填充背景颜色
+        ctx.fillStyle = color
+        ctx.fill()
+
+        // 填充边框颜色
+        ctx.lineWidth = borderWidth
+        ctx.lineCap = 'round'
+        ctx.strokeStyle = 'red'
+        ctx.stroke() //
+
+        // 填充文字颜色
+        ctx.font = "20px Arial"
+        ctx.fillStyle = textColor
+        ctx.textAlign = "center"
+        ctx.fillText(fontText, (W + borderWidth) / 2, (H + borderWidth * 2) / 2)
+
+        return canvas
+      }
+
+      for (var i = 0; i < 20; i++) {
+
+        document.body.append(createCanvas(100, 100, 5, 'red', '#555555', '#fff', i))
+      }
+    }
+  </script>
+</body>
+
+</html>

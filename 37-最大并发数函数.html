@@ -11,19 +11,18 @@
 <body>
     <script>
         function handleFetchQueue(urls, max, callback) {
-            const urlCount = urls.length;
-            const requestsQueue = [];
-            const results = [];
+            const maxUrlCount = urls.length; // 总请求长度
+            const requestsQueue = []; // 请求队列
+            const results = []; // 请求结果
             let i = 0;
             const handleRequest = (url) => {
                 const req = fetch(url).then(res => {
-                    console.log('当前并发： ' + requestsQueue);
-                    console.log(requestsQueue);
                     const len = results.push(res);
-                    if (len < urlCount && i + 1 < urlCount) {
+                    if (len < maxUrlCount && i + 1 < maxUrlCount) {
                         requestsQueue.shift();
+                        console.log(i)
                         handleRequest(urls[++i])
-                    } else if (len === urlCount) {
+                    } else if (len === maxUrlCount) {
                         'function' === typeof callback && callback(results)
                     }
                 }).catch(e => {
@@ -33,7 +32,7 @@
                     handleRequest(urls[++i])
                 }
             };
-            handleRequest(urls[i])
+            handleRequest(urls[i])  // 1=>1 2=>2 3=>3 4=>4
         }
 
         const urls = Array.from({
@@ -56,6 +55,7 @@
         const callback = () => {
             console.log('run callback');
         };
+        console.log(urls)
         handleFetchQueue(urls, max, callback);
     </script>
 </body>

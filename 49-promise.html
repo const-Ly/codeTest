@@ -21,28 +21,28 @@
         // console.info(textarea)
 
 
-        // new Promise((resolve, reject) => {
-        //         console.log("外部promise");
-        //         resolve();
-        //     })
-        //     .then(() => {
-        //         console.log("外部第一个then");
-        //         var a = new Promise((resolve, reject) => {
-        //                 console.log("内部promise");
-        //                 resolve();
-        //             })
-        //             .then(() => {
-        //                 console.log("内部第一个then");
-        //             })
-        //         console.info(a)
+        new Promise((resolve, reject) => {
+                console.log("外部promise");
+                resolve();
+            })
+            .then(() => {
+                console.log("外部第一个then");
+                var a = new Promise((resolve, reject) => {
+                        console.log("内部promise");
+                        resolve();
+                    })
+                    .then(() => {
+                        console.log("内部第一个then");
+                    })
+                console.info(a)
 
-        //         // .then(() => {
-        //         //     console.log("内部第二个then");
-        //         // });
-        //     })
-        //     .then(() => {
-        //         console.log("外部第二个then");
-        //     });
+                // .then(() => {
+                //     console.log("内部第二个then");
+                // });
+            })
+            .then(() => {
+                console.log("外部第二个then");
+            });
 
 
         // new Promise((resolve, reject) => {
@@ -67,115 +67,115 @@
         //     });
 
         // let p = new Promise((resolve, reject) => {
-        //     console.log("外部promise");  // 1
+        //     console.log("外部promise");  // 
         //     resolve();
         // })
         // p.then(() => {
-        //     console.log("外部第一个then"); // 2
+        //     console.log("外部第一个then"); // 
         //     new Promise((resolve, reject) => {
-        //             console.log("内部promise"); // 3
+        //             console.log("内部promise"); // 
         //             resolve();
         //         })
         //         .then(() => {
-        //             console.log("内部第一个then"); // 5
+        //             console.log("内部第一个then"); // 
         //         })
         //         .then(() => {
-        //             console.log("内部第二个then"); // 6
+        //             console.log("内部第二个then"); // 
         //         });
         // })
         // p.then(() => {
-        //     console.log("外部第二个then"); // 4
+        //     console.log("外部第二个then"); // 
         // });
 
         // new Promise((resolve, reject) => {
-        //         console.log("外部promise");  // 1
+        //         console.log("外部promise");  // 
         //         resolve();
         //     })
         //     .then(() => {
-        //         console.log("外部第一个then"); // 2
+        //         console.log("外部第一个then"); // 
         //         new Promise((resolve, reject) => {
-        //                 console.log("内部promise"); // 3
+        //                 console.log("内部promise"); // 
         //                 resolve();
         //             })
         //             .then(() => {
-        //                 console.log("内部第一个then"); // 5
+        //                 console.log("内部第一个then"); // 
         //             })
         //             .then(() => {
-        //                 console.log("内部第二个then"); // 7
+        //                 console.log("内部第二个then"); // 
         //             });
         //         return new Promise((resolve, reject) => {
-        //                 console.log("内部promise2"); // 4
+        //                 console.log("内部promise2"); // 
         //                 resolve();
         //             })
         //             .then(() => {
-        //                 console.log("内部第一个then2"); // 6
+        //                 console.log("内部第一个then2"); // 
         //             })
         //             .then(() => {
-        //                 console.log("内部第二个then2"); // 8
+        //                 console.log("内部第二个then2"); // 
         //             });
         //     })
         //     .then(() => {
-        //         console.log("外部第二个then"); // 9
+        //         console.log("外部第二个then"); // 
         //     });
 
         // new Promise((resolve, reject) => {
-        //         console.log('外部promise'); // 1
+        //         console.log('外部promise'); // 
         //         resolve();
         //     })
         //     .then(() => {
-        //         console.log('外部第一个then'); // 2
+        //         console.log('外部第一个then'); // 
         //         new Promise((resolve, reject) => {
-        //                 console.log('内部promise'); // 3
+        //                 console.log('内部promise'); // 
         //                 resolve();
         //             })
         //             .then(() => {
-        //                 console.log('内部第一个then'); // 4
+        //                 console.log('内部第一个then'); // 
         //                 return Promise.resolve();
         //             })
         //             .then(() => {
-        //                 console.log('内部第二个then'); // 7
+        //                 console.log('内部第二个then'); // 
         //             })
         //     })
         //     .then(() => {
-        //         console.log('外部第二个then'); // 5
+        //         console.log('外部第二个then'); // 
         //     })
         //     .then(() => {
-        //         console.log('外部第三个then'); // 6
+        //         console.log('外部第三个then'); // 
         //     })
 
         // new Promise((resolve, reject) => {
-        //         console.log("外部promise"); // 1
+        //         console.log("外部promise"); // 
         //         resolve();
         //     })
         //     .then(() => {
-        //         console.log("外部第一个then"); // 2
+        //         console.log("外部第一个then"); // 
         //         new Promise((resolve, reject) => {
-        //                 console.log("内部promise"); // 3
+        //                 console.log("内部promise"); // 
         //                 resolve();
         //             })
         //             .then(() => {
-        //                 console.log("内部第一个then");//5
+        //                 console.log("内部第一个then");//
         //             })
         //             .then(() => {
-        //                 console.log("内部第二个then");//7
+        //                 console.log("内部第二个then");//
         //             });
         //         return new Promise((resolve, reject) => {
-        //                 console.log("内部promise2"); // 4
+        //                 console.log("内部promise2"); // 
         //                 resolve();
         //             })
         //             .then(() => {
-        //                 console.log("内部第一个then2");//6
+        //                 console.log("内部第一个then2");//
         //             })
         //             .then(() => {
-        //                 console.log("内部第二个then2");//8
+        //                 console.log("内部第二个then2");//
         //             });
         //     })
         //     .then(() => {
-        //         console.log("外部第二个then");//9
+        //         console.log("外部第二个then");//
         //     });
 
         // new Promise((resolve, reject) => {
-        //     console.log("promise1", 1) // 1
+        //     console.log("promise1", 1) // 
         //     resolve()
         // }).then(() => {
         //     console.log("then11", 2)

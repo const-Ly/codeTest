@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    const url = 'www.baidu.com?a=1&b=2&c=3&e=&d=4'
+    function getUrlParams(url) {
+      const paramsObj = {}
+      const str1 = url.split('?')[1] // a=1&b=2&c=3&e=&d=4
+      const arr1 = str1.split('&') // ['a=1', 'b=2']
+      for(let i = 0; i < arr1.length; i++) {
+        const keyAndValue = arr1[i].split('=')
+        paramsObj[keyAndValue[0]] = keyAndValue[1] || ''
+      }
+
+      return paramsObj
+    }
+
+    console.log(getUrlParams(url))
+  </script>
+</body>
+
+</html>

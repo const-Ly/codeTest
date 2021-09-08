@@ -16,7 +16,7 @@
          * 实现原生的call
          * 
          * obj
-        */
+         */
 
         if (!Function.prototype.call) {
             Function.prototype.call = function (...args) {
@@ -34,7 +34,7 @@
          * 实现原生的apply
          * 
          * obj
-        */
+         */
 
         if (!Function.prototype.apply) {
             Function.prototype.apply = function (...args) {
@@ -51,7 +51,7 @@
          * 实现原生的bind
          * 
          * obj
-        */
+         */
 
         if (!Function.prototype.bind) {
             Function.prototype.bind = function (...args) {
@@ -67,11 +67,11 @@
          * 实现原生的create
          * 
          * 将传入的对象作为原型,返回一个新的对象
-        */
+         */
 
         if (!Function.prototype.create) {
             Function.prototype.create = function (obj) {
-                function F() { }
+                function F() {}
                 F.prototype = obj
                 return new F();
             }
@@ -86,30 +86,30 @@
         }
 
         /**
-        * 
-        * 实现原生的create
-        * 
-        * 将传入的对象作为原型
-       */
+         * 
+         * 实现原生的create
+         * 
+         * 将传入的对象作为原型
+         */
 
         function myNew(fn, ...agrs) {
             let obj = {};
             obj.__proto__ = fn.prototype;
-
-            fn.apply(obj, agrs);
-            return obj;
+            const res = fn.apply(obj, agrs);
+            return typeof(res) === 'object' ? res : obj;
         }
+
         function Person(name) {
             this.name = name
         }
 
 
         /**
-        * 
-        * 实现一个基本的Event Bus
-        * 
-        * 将传入的对象作为原型
-       */
+         * 
+         * 实现一个基本的Event Bus
+         * 
+         * 将传入的对象作为原型
+         */
 
         class EventEmitter {
             constructor() {
@@ -174,7 +174,29 @@
             }
         }
 
+        function myInstanceOf(left, right) {
+            if (left === null || typeof left !== 'object') return false;
+            if (typeof right !== 'function') throw new Error('right must be function')
+            let L = left.__proto__;
+            let R = right.prototype;
+            while (L !== null) {
+                if (L === R) return true;
+                L = L.__proto__;
+            }
+            return false;
+        }
 
+        function instanceOf(left, right) {
+            let L = left.__proto__
+            let R = right.prototype
+            while (L !== null) {
+                if(L === R) {
+                    return true
+                }
+                L = L.__proto__
+            }
+            return false
+        }
     </script>
 </body>
 
