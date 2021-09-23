@@ -13,40 +13,92 @@
     /**
      * 
      * 必会项
-第三题）css选择器，至少说出5种以上
-第四题）flex布局，屏幕&移动端适配
-第六题）localstorage和cookie的区别和用法
-第七题）Promise具体有哪些方法，如何使用
-第八题）作用域链&闭包的概念
-第九题）call和apply的用法与概念
-第九题）数组方法，至少说出10种以上并会使用
-第九题）ES6 扩展运算符
-vue-router钩子
-Vue生命周期
-组件通信方式
-组件封装思想
-webpack配置
-git flow
-加分项（排名不分先后）
-第一题）http和https的区别和细节、request&response、waf
-第七题）用ES6 Class简单手写实现Promise类
-Vue plugin&directive编写
-Vue源码&原理
-ES6特性Set、Map、Generator、Proxy等
-HTML5 API Canvas、svg、webgl、webrtc、websocket、webworker
-TypeScript
-sdk封装
-OOP思想
-软件设计模式
-webpack原理&plugin&loader编写
-Nginx配置
-NodeJs基础
-server端基础 进程&线程，分布式SLB，进程守护，pm2源码
-数据库&缓存 sql&nosql
-数据结构&算法
+        第三题）css选择器，至少说出5种以上
+        第四题）flex布局，屏幕&移动端适配
+        第六题）localstorage和cookie的区别和用法
+        第七题）Promise具体有哪些方法，如何使用
+        第八题）作用域链&闭包的概念
+        第九题）call和apply的用法与概念
+        第九题）数组方法，至少说出10种以上并会使用
+        第九题）ES6 扩展运算符
+        vue-router钩子
+        Vue生命周期
+        组件通信方式
+        组件封装思想
+        webpack配置
+        git flow
+        加分项（排名不分先后）
+        第一题）http和https的区别和细节、request&response、waf
+        第七题）用ES6 Class简单手写实现Promise类
+        Vue plugin&directive编写
+        Vue源码&原理
+        ES6特性Set、Map、Generator、Proxy等
+        HTML5 API Canvas、svg、webgl、webrtc、websocket、webworker
+        TypeScript
+        sdk封装
+        OOP思想
+        软件设计模式
+        webpack原理&plugin&loader编写
+        Nginx配置
+        NodeJs基础
+        server端基础 进程&线程，分布式SLB，进程守护，pm2源码
+        数据库&缓存 sql&nosql
+        数据结构&算法
      * 
      * 
     */
+
+    // const obj = {
+    //   a(a) {
+    //     console.log(a)
+    //   }
+    // }
+    // console.log(obj.a(1))
+
+    function test() {
+
+    }
+    test.prototype.then = function () {
+      console.log('test => then')
+    }
+    Function.prototype.mythen = function () {
+      console.log('Function => mythen')
+    }
+    // test.mythen();
+    // test.then();
+
+
+
+    function sleep(delay, callback) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          callback();
+          resolve()
+        }, delay);
+      })
+    }
+    class Queue {
+      constructor() {
+        this.listenser = [];
+      }
+      task(delay, callback) {
+        // 收集函数
+        this.listenser.push(() => sleep(delay, callback));
+        return this;
+      }
+      async start() {
+        // 遍历函数
+        for (let l of this.listenser) {
+          await l()
+          console.log('12')
+        }
+      }
+    }
+
+    new Queue()
+      .task(1000, () => console.log(1))
+      .task(2000, () => console.log(2))
+      .task(3000, () => console.log(3)).start();
   </script>
 </body>
 
