@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "cti-js-sdk": "^3.6.20"
+    "cti-js-sdk": "^3.6.20",
+    "echarts": "^5.2.1"
   }
 }

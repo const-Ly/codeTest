@@ -1,0 +1,419 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 595px;
+  min-height: 1000px;
+}
+
+.cover {
+  width: 595px;
+  height: 841px;
+}
+
+.contents,
+.introduction,
+.introduction-2,
+.family-policy,
+.overview-family,
+.recommendation,
+.chronicle-events ,.consultant{
+  margin:50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 38px;
+}
+
+.top-image {
+  width: 520px;
+  height: 29px;
+}
+
+.common-title {
+  width: 520px;
+  margin-top: 24px;
+}
+
+.common-title .text {
+  background: #005AAA;
+  font-family: AlibabaPuHuiTi-Bold;
+  font-size: 24px;
+  color: #FFFFFF;
+  letter-spacing: 6.17px;
+  line-height: 24px;
+  font-weight: 700;
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+}
+
+.common-title .en-text {
+  margin-top: 6px;
+  font-family: D-DIN-Bold;
+  font-size: 18px;
+  color: #005AAA;
+  letter-spacing: 2px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+
+/* 目录 */
+.contents .content .item {
+  width: 520px;
+  display: flex;
+  align-items: center;
+  height: 22px;
+  margin-top: 24px;
+  margin-bottom: 18px;
+}
+
+.contents .content .item .index {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 16px;
+  color: #000000;
+  letter-spacing: -0.32px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.contents .content .item .slash {
+  font-family: LucidaGrande;
+  font-size: 14px;
+  color: #DEDEDE;
+  font-weight: 400;
+  margin: 0 12px;
+}
+
+.contents .content .item .text {
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 14px;
+  color: #005AAA;
+  letter-spacing: -0.21px;
+  line-height: 20px;
+  font-weight: 500;
+  width: 150px;
+  text-align: left;
+}
+
+.contents .content .item .line-1 {
+  width: 330px;
+  height: 1px;
+  border-bottom: 1px dashed #DEDEDE;
+}
+
+.contents .content .item .pageNo {
+  font-family: D-DIN-Italic;
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+  margin-left: 23px;
+  font-style: italic;
+}
+
+/* 水滴简介 */
+.introduction .content {
+  margin-top: 24px;
+}
+
+.introduction .content .item {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.introduction .content .item .index {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3157F6;
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+.introduction .content .item .text {
+  width: 495px;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #333333;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.introduction .content .image {
+  width: 498px;
+  height: 296px;
+  margin-top: 20px;
+  margin-left: 11px;
+}
+
+/* 水滴保险经纪简介 */
+.introduction-2 .content .des {
+  width: 509px;
+  margin: 22px 0 60px 0;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #333333;
+  text-align: left;
+  line-height: 14px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.introduction-2 .content .mission {
+  margin-bottom: 24px;
+}
+
+.introduction-2 .content .mission .title {
+  width: 520px;
+  background: #005AAA;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  font-family: AlibabaPuHuiTi-Bold;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 700;
+}
+
+.introduction-2 .content .mission .text-container {
+  background: #F2F6FF;
+  width: 520px;
+  height: 102px;
+  padding-top: 24px;
+  box-sizing: border-box;
+}
+
+.introduction-2 .content .mission .text-container-2 {
+  height: 155px;
+}
+
+.introduction-2 .content .mission .text-1 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #333333;
+}
+
+.introduction-2 .content .mission .text-2 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 6px;
+}
+
+.introduction-2 .content .mission .text-3 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 16px;
+}
+
+.introduction-2 .content .mission .index {
+  width: 10px;
+  height: 10px;
+  background: #3157F6;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 116px;
+}
+
+/* 家庭风险保障总览 */
+.overview-family .describe {
+  width: 520px;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #999999;
+  line-height: 17px;
+  font-weight: 400;
+  margin: 22px 0 10px 0;
+}
+
+/* 家庭保单整理 */
+.family-policy .content {
+  margin-top: 24px;
+}
+
+.family-policy .content .title {
+  background: #005AAA;
+  width: 520px;
+  display: flex;
+}
+
+.family-policy .content .title .text {
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 12px;
+  color: #FFFFFF;
+  text-align: left;
+  line-height: 12px;
+  font-weight: 500;
+  width: 130px;
+  text-align: center;
+  height: 32px;
+  line-height: 32px;
+}
+
+.family-policy .content .item,
+.family-policy .content .total {
+  display: flex;
+}
+
+.family-policy .content .item .month {
+  border: 1px solid #DEDEDE;
+  background: rgba(0, 90, 170, 0.08);
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #666666;
+  text-align: center;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.family-policy .content .item .money {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #DEDEDE;
+}
+
+.family-policy .content .total .text {
+  width: 100px;
+  height: 32px;
+  line-height: 32px;
+  font-family: AlibabaPuHuiTi-Bold;
+  font-size: 12px;
+  color: #333333;
+  text-align: center;
+  font-weight: 700;
+  box-sizing: border-box;
+  border: 1px solid #DEDEDE;
+}
+
+.family-policy .content .total .total-num {
+  flex: 1;
+  height: 32px;
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 12px;
+  line-height: 32px;
+  color: #000000;
+  text-align: center;
+  font-weight: 500;
+  box-sizing: border-box;
+  border: 1px solid #DEDEDE;
+}
+
+.family-policy .describe {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 10px;
+  color: #999999;
+  font-weight: 400;
+  margin: 10px 0 30px 0;
+  text-align: center;
+}
+
+.family-policy .policy-total {
+  width: 520px;
+  text-align: left;
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 500;
+}
+
+#main {
+  margin-top: 10px;
+  background: #F2F6FF;
+}
+
+/* 专业建议 */
+.recommendation .content {
+  margin-top: 24px;
+  width: 520px;
+  height: 594px;
+  background: #F2F6FF;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+/* 水滴经纪人介绍 */
+.consultant .content {
+  margin-top: 24px;
+}
+
+.consultant .content .title {
+  width: 520px;
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 17px;
+  color: #000000;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.consultant .content .detail-info {
+  display: flex;
+  flex-direction: column;
+  width: 520px;
+  min-height: 132px;
+  background: #F2F6FF;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.consultant .content .detail-info .person-code {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 100px;
+  height: 100px;
+}
+
+.consultant .content .detail-info .name {
+  margin-bottom: 2px;
+}
+
+.consultant .content .detail-info .name span {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #000000;
+  letter-spacing: -0.48px;
+  line-height: 17px;
+  font-weight: 400;
+}
+
+/* 水滴大事件 */
+.chronicle-events .image {
+  width: 520px;
+  height: 574px;
+  margin-top: 24px;
+}
+
+/* 公共样式 */
+
+.t-a-c {
+  text-align: center;
+}

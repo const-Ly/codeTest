@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    function ObserverList() {
+      this.observerList = [];
+    }
+
+    ObserverList.prototype.add = function (obj) {
+      return this.observerList.push(obj);
+    };
+    ObserverList.prototype.count = function () {
+      return this.observerList.length;
+    };
+    ObserverList.prototype.get = function (index) {
+      if (index > -1 && index < this.observerList.length) {
+        return this.observerList[index];
+      }
+    };
+    ObserverList.prototype.indexOf = function (obj, startIndex) {
+      var i = startIndex;
+
+      while (i < this.observerList.length) {
+        if (this.observerList[i] === obj) {
+          return i;
+        }
+        i++;
+      }
+
+      return -1;
+    };
+    ObserverList.prototype.removeAt = function (index) {
+      this.observerList.splice(index, 1);
+    };
+
+
+    //观察者
+    function Observer() {
+      this.name = "Observer";
+      this.setName = function (name) {
+        this.name = name;
+      }
+      this.getName = function () {
+        return this.name;
+      }
+      this.update = function (context) { //获取更新
+        console.log(context + ' Observer: ' + this.name);
+      };
+    }
+    //订阅者
+    function Subject() {
+      this.observers = new ObserverList();
+    }
+
+    Subject.prototype.addObserver = function (observer) {
+      this.observers.add(observer);
+    };
+
+    Subject.prototype.removeObserver = function (observer) {
+      this.observers.removeAt(this.observers.indexOf(observer, 0));
+    };
+
+    Subject.prototype.notify = function (context) { //通知观察者有更新
+      var observerCount = this.observers.count();
+      for (var i = 0; i < observerCount; i++) {
+        this.observers.get(i).update(context);
+      }
+    };
+
+    //测试
+    var sub1 = new Subject();
+    var obs1 = new Observer();
+    obs1.setName('sub1');
+    var obs2 = new Observer();
+    obs2.setName('sub2');
+    sub1.addObserver(obs1);
+    sub1.addObserver(obs2);
+    sub1.notify('查看了');
+
+    sub1.removeObserver(obs2);
+    sub1.notify('访问了');
+  </script>
+</body>
+
+</html>
