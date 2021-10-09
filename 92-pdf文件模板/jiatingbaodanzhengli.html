@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家庭保单整理</title>
+  <script src="./assets/js/echarts.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- 家庭保单整理 -->
+    <div class="family-policy">
+      <img class="top-image" src="./assets/image/头部.png" alt="">
+      <div class="common-title">
+        <div class="text">家庭保单整理</div>
+        <div class="en-text">FAMILY POLICY REORGANIZATION</div>
+      </div>
+
+      <div class="content">
+        <div class="title">
+          <div class="text w-100">月度</div>
+          <div class="text w-150">保费</div>
+          <div class="text w-100">月度</div>
+          <div class="text w-150">保费</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年1月</div>
+          <div class="money">1111</div>
+          <div class="month">2020年7月</div>
+          <div class="money">777</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年2月</div>
+          <div class="money">222</div>
+          <div class="month">2020年8月</div>
+          <div class="money">888</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年3月</div>
+          <div class="money">333</div>
+          <div class="month">2020年9月</div>
+          <div class="money">999</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年4月</div>
+          <div class="money">444</div>
+          <div class="month">2020年10月</div>
+          <div class="money">101010</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年5月</div>
+          <div class="money">555</div>
+          <div class="month">2020年11月</div>
+          <div class="money">111111</div>
+        </div>
+        <div class="item">
+          <div class="month">2020年6月</div>
+          <div class="money">666</div>
+          <div class="month">2020年12月</div>
+          <div class="money">121212</div>
+        </div>
+        <div class="total">
+          <div class="text">总计</div>
+          <div class="total-num">9,252.00元+5,600.00港元</div>
+        </div>
+      </div>
+      <div class="describe">*以上数据仅作参考，具体以保单责任描述为准</div>
+      <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+      <div class="policy-total">总保费（元）:23456789.03</div>
+      <div id="main" style="width: 520px;height:260px;"></div>
+    </div>
+
+
+  </div>
+</body>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 指定图表的配置项和数据
+  var option = option = {
+    title: {
+      left: 'center'
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    series: [{
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
+      data: [{
+          value: 1048,
+          name: '张三 1048'
+        },
+        {
+          value: 735,
+          name: '李四 735'
+        },
+        {
+          value: 580,
+          name: '王五 580'
+        },
+        {
+          value: 484,
+          name: '小红 484'
+        },
+        {
+          value: 100,
+          name: '小飞1 100'
+        },
+        {
+          value: 200,
+          name: '小飞2 200'
+        },
+        {
+          value: 300,
+          name: '小飞3 300'
+        },
+        {
+          value: 400,
+          name: '小飞4 400'
+        },
+        {
+          value: 500,
+          name: '小飞5 500'
+        }
+      ],
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }]
+  };
+
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+</script>
+</html>

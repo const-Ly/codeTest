@@ -21,12 +21,9 @@ body {
 .family-policy,
 .overview-family,
 .recommendation,
-.chronicle-events ,.consultant{
-  margin:50px 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.chronicle-events,
+.consultant, .family-policy-2{
+  margin: 50px 0px;
   padding: 0 38px;
 }
 
@@ -67,11 +64,14 @@ body {
 /* 目录 */
 .contents .content .item {
   width: 520px;
-  display: flex;
-  align-items: center;
   height: 22px;
+  line-height: 22px;
   margin-top: 24px;
   margin-bottom: 18px;
+}
+
+.contents .content .item div {
+  display: inline-block;
 }
 
 .contents .content .item .index {
@@ -98,22 +98,23 @@ body {
   letter-spacing: -0.21px;
   line-height: 20px;
   font-weight: 500;
-  width: 150px;
+  width: 130px;
   text-align: left;
 }
 
 .contents .content .item .line-1 {
-  width: 330px;
-  height: 1px;
+  width: 274px;
+  height: 10px;
   border-bottom: 1px dashed #DEDEDE;
 }
 
-.contents .content .item .pageNo {
+.contents .content .item .page-no {
+  min-width: 30px;
+  text-align: right;
   font-family: D-DIN-Italic;
   font-size: 12px;
   color: #000000;
   font-weight: 400;
-  margin-left: 23px;
   font-style: italic;
 }
 
@@ -123,8 +124,12 @@ body {
 }
 
 .introduction .content .item {
-  display: flex;
   margin-bottom: 12px;
+  position: relative;
+}
+
+.introduction .content .item div {
+  display: inline-block;
 }
 
 .introduction .content .item .index {
@@ -133,11 +138,14 @@ body {
   border-radius: 50%;
   background: #3157F6;
   margin-right: 10px;
-  margin-top: 6px;
+  position: absolute;
+  top: 8px;
+  left: 0px;
 }
 
 .introduction .content .item .text {
-  width: 495px;
+  width: 490px;
+  margin-left: 20px;
   font-family: AlibabaPuHuiTi-Regular;
   font-size: 14px;
   color: #333333;
@@ -234,7 +242,45 @@ body {
   margin: 22px 0 10px 0;
 }
 
-/* 家庭保单整理 */
+table {
+  border-right: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 0;
+  border: 1px solid #dedede;
+  border-right: none;
+  border-bottom: none;
+}
+
+table th {
+  padding: 0;
+  border: 1px solid #dedede;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tr {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #FFFFFF;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+}
+
+.tr-1 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+  height: 25px;
+  line-height: 25px;
+}
+
+/* 家庭保费整理 */
 .family-policy .content {
   margin-top: 24px;
 }
@@ -242,7 +288,12 @@ body {
 .family-policy .content .title {
   background: #005AAA;
   width: 520px;
-  display: flex;
+  font-size: 0;
+}
+
+.family-policy .content .title div {
+  display: inline-block;
+  /* float: left; */
 }
 
 .family-policy .content .title .text {
@@ -252,7 +303,6 @@ body {
   text-align: left;
   line-height: 12px;
   font-weight: 500;
-  width: 130px;
   text-align: center;
   height: 32px;
   line-height: 32px;
@@ -260,7 +310,15 @@ body {
 
 .family-policy .content .item,
 .family-policy .content .total {
-  display: flex;
+  /* display: flex; */
+  font-size: 0;
+  width: 520px;
+}
+
+.family-policy .content .item div,
+.family-policy .content .total div {
+  /* float: left; */
+  display: inline-block;
 }
 
 .family-policy .content .item .month {
@@ -271,12 +329,11 @@ body {
   color: #666666;
   text-align: center;
   font-weight: 400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100px;
   height: 32px;
+  line-height: 32px;
   box-sizing: border-box;
+  margin: 0;
 }
 
 .family-policy .content .item .money {
@@ -285,13 +342,12 @@ body {
   color: #000000;
   text-align: center;
   font-weight: 400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 160px;
   height: 32px;
+  line-height: 32px;
   box-sizing: border-box;
   border: 1px solid #DEDEDE;
+  margin: 0;
 }
 
 .family-policy .content .total .text {
@@ -308,7 +364,7 @@ body {
 }
 
 .family-policy .content .total .total-num {
-  flex: 1;
+  width: 420px;
   height: 32px;
   font-family: AlibabaPuHuiTi-Medium;
   font-size: 12px;
@@ -343,6 +399,144 @@ body {
   background: #F2F6FF;
 }
 
+/* 家庭保单整理 */
+.family-policy-2 .content {
+  margin-top: 22px;
+}
+
+.family-policy-2 .content .header {
+  width: 520px;
+  height: 32px;
+  background: rgb(241, 240, 238);
+  position: relative;
+  font-size: 0;
+}
+
+.family-policy-2 .content .header .icon {
+  width: 34px;
+  height: 20px;
+  margin: 6px 6px 0 10px;
+}
+
+.family-policy-2 .content .header .text-1 {
+  font-family: AlibabaPuHuiTi-Medium;
+  font-size: 13px;
+  color: #333333;
+  font-weight: 500;
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  left: 50px;
+}
+
+.family-policy-2 .content .header .text-2 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+
+.family-policy-2 .content .detail-info .text {
+  width: 520px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-family: AlibabaPuHuiTi-Bold;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 0.36px;
+  font-weight: 700;
+  background: #005AAA;
+}
+
+.family-policy-2 .content .detail-info .money-age {
+  border: 1px solid #dedede;
+  width: 520px;
+  height: 38px;
+  line-height: 38px;
+  box-sizing: border-box;
+}
+
+.family-policy-2 .content .detail-info .money-age .text-1 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 12px;
+  color: #5F5F5F;
+  font-weight: 400;
+  margin: 0 0px 0 10px;
+}
+
+.family-policy-2 .content .detail-info .money-age .text-2 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.family-policy-2 .content .detail-info .money-con .item {
+  width: 520px;
+  border: 1px solid #dedede;
+  box-sizing: border-box;
+  font-size: 0;
+}
+
+.family-policy-2 .content .detail-info .money-con .left {
+  width: 150px;
+  text-align: center;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 10px;
+  color: #000000;
+  font-weight: 400;
+  min-height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  border-right: 1px solid #dedede;
+}
+
+.family-policy-2 .content .detail-info .money-con .right {
+  width: 360px;
+  display: inline-block;
+  /* padding-top: 14px; */
+  box-sizing: border-box;
+  /* margin-top: 20px; */
+  padding-left: 20px;
+  /* transform: scaleY(); */
+}
+
+.family-policy-2 .content .detail-info .money-con .right .text-con {
+  /* margin-top: 10px; */
+  /* height: 25px;
+  line-height: 25px; */
+  transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+}
+
+.family-policy-2 .content .detail-info .money-con .right .text-1 {
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 10px;
+  color: #797979;
+  font-weight: 400;
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+.family-policy-2 .content .detail-info .money-con .right .text-2 {
+  width: 360px;
+  font-family: AlibabaPuHuiTi-Regular;
+  font-size: 10px;
+  color: #000000;
+  font-weight: 400;
+  margin-left: 4px;
+  margin-top: 6px;
+}
+
+
 /* 专业建议 */
 .recommendation .content {
   margin-top: 24px;
@@ -374,8 +568,6 @@ body {
 }
 
 .consultant .content .detail-info {
-  display: flex;
-  flex-direction: column;
   width: 520px;
   min-height: 132px;
   background: #F2F6FF;
@@ -412,8 +604,34 @@ body {
   margin-top: 24px;
 }
 
+
+
 /* 公共样式 */
 
 .t-a-c {
   text-align: center;
+}
+
+.w-100 {
+  width: 100px;
+}
+
+.w-150 {
+  width: 160px;
+}
+
+.color-005aaa {
+  background: #005AAA;
+}
+
+.w-76 {
+  width: 76px;
+}
+
+.w-88 {
+  width: 88px;
+}
+
+.w-280 {
+  width: 280px;
 }
