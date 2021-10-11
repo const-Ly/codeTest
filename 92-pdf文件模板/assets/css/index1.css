@@ -16,7 +16,6 @@ body {
 }
 
 .contents,
-.family-profile,
 .introduction,
 .introduction-2,
 .family-policy,
@@ -36,49 +35,19 @@ body {
 .common-title {
   width: 520px;
   margin-top: 24px;
-  position: relative;
-}
-
-.common-title .con {
-  /* background: #005AAA; */
-  line-height: 24px;
-  height: 32px;
-  line-height: 32px;
-  display: inline-block;
-  position: relative;
-  font-size: 0;
-  /* overflow: hidden; */
 }
 
 .common-title .text {
   background: #005AAA;
-  min-width: 50px;
   font-family: AlibabaPuHuiTi-Bold;
   font-size: 24px;
-  font-weight: 700;
   color: #FFFFFF;
+  letter-spacing: 6.17px;
+  line-height: 24px;
+  font-weight: 700;
   height: 32px;
   line-height: 32px;
   display: inline-block;
-  vertical-align: top;
-  margin-left: -4px;
-  padding: 0 10px;
-}
-
-.common-title .image-1 {
-  width: 51px;
-  height: 32px;
-  display: inline-block;
-  background: url('../image/箭头头部.png');
-  background-size: 100% 100%;
-}
-
-.common-title .image-2 {
-  width: 19px;
-  height: 32px;
-  display: inline-block;
-  background: url('../image/箭头尾部.png');
-  background-size: 100% 100%;
 }
 
 .common-title .en-text {
@@ -89,16 +58,6 @@ body {
   letter-spacing: 2px;
   line-height: 20px;
   font-weight: 700;
-}
-
-.common-title .name {
-  position: absolute;
-  top: 4px;
-  right: 10px;
-  font-family: AlibabaPuHuiTi-Regular;
-  font-size: 17px;
-  color: #000000;
-  font-weight: 400;
 }
 
 
@@ -157,20 +116,6 @@ body {
   color: #000000;
   font-weight: 400;
   font-style: italic;
-}
-
-/* 家庭成员简介 */
-.family-profile .content {
-}
-
-.family-profile .desc {
-  font-family: AlibabaPuHuiTi-Regular;
-  font-size: 12px;
-  color: #999999;
-  line-height: 17px;
-  font-weight: 400;
-  margin-top: 24px;
-  margin-bottom: 10px;
 }
 
 /* 水滴简介 */
@@ -297,10 +242,17 @@ body {
   margin: 22px 0 10px 0;
 }
 
- table {
+.overview-family .content {
+  font-size: 0;
+}
+
+table {
   border-right: 1px solid #dedede;
   border-bottom: 1px solid #dedede;
   border-collapse: collapse;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 564px;
 }
 
 table td {
@@ -308,6 +260,7 @@ table td {
   border: 1px solid #dedede;
   border-right: none;
   border-bottom: none;
+  box-sizing: border-box;
 }
 
 table th {
@@ -315,6 +268,7 @@ table th {
   border: 1px solid #dedede;
   border-right: none;
   border-bottom: none;
+  box-sizing: border-box;
 }
 
 .tr {
@@ -322,8 +276,9 @@ table th {
   font-size: 12px;
   color: #FFFFFF;
   font-weight: 400;
-  height: 25px;
-  line-height: 25px;
+  height: 26px;
+  line-height: 26px;
+  box-sizing: border-box;
 }
 
 .tr-1 {
@@ -331,8 +286,24 @@ table th {
   font-size: 12px;
   color: #000000;
   font-weight: 400;
-  height: 25px;
-  line-height: 25px;
+  height: 26px;
+  line-height: 26px;
+  box-sizing: border-box;
+}
+
+.table-1 td {
+  height: 26px;
+  line-height: 26px;
+}
+
+.table-1 th {
+  height: 24px;
+  line-height: 24px;
+}
+
+.table-1 tr {
+  height: 24px;
+  line-height: 24px;
 }
 
 /* 家庭保费整理 */
@@ -533,10 +504,10 @@ table th {
 
 .family-policy-2 .content .detail-info .money-con .item {
   width: 520px;
-  min-height: 44px;
   border: 1px solid #dedede;
   box-sizing: border-box;
-  position: relative;
+  font-size: 0;
+  display: inline-block;
 }
 
 .family-policy-2 .content .detail-info .money-con .left {
@@ -546,31 +517,33 @@ table th {
   font-size: 10px;
   color: #000000;
   font-weight: 400;
+  min-height: 50px;
+  line-height: 50px;
   /* display: inline-block; */
+  border-right: 1px solid #dedede;
   float: left;
-  position: absolute;
-  height: 100%;
-  line-height: 44px;
 }
 
 .family-policy-2 .content .detail-info .money-con .right {
   width: 360px;
+  /* padding-top: 14px; */
   box-sizing: border-box;
+  /* margin-top: 20px; */
   padding-left: 20px;
+  /* transform: scaleY(); */
   /* float: left; */
   /* display: inline-block; */
   margin-left: 150px;
-  border-left: 1px solid #dedede;
 }
 
 .family-policy-2 .content .detail-info .money-con .right .text-con {
   /* margin-top: 10px; */
   /* height: 25px;
   line-height: 25px; */
-  /* transform: translateY(10px);
+  transform: translateY(10px);
   -webkit-transform: translateY(10px);
   -ms-transform: translateY(10px);
-  -moz-transform: translateY(10px); */
+  -moz-transform: translateY(10px);
 }
 
 .family-policy-2 .content .detail-info .money-con .right .text-1 {
@@ -631,7 +604,6 @@ table th {
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  margin-bottom: 24px;
 }
 
 .consultant .content .detail-info .person-code {
@@ -650,79 +622,9 @@ table th {
   font-family: AlibabaPuHuiTi-Regular;
   font-size: 12px;
   color: #000000;
+  letter-spacing: -0.48px;
   line-height: 17px;
   font-weight: 400;
-}
-
-.consultant .content .honor-info {
-  width: 520px;
-  min-width: 161px;
-  margin-bottom: 24px;
-  background: #F2F6FF;
-  padding: 20px;
-  font-size: 0;
-}
-
-.consultant .content .honor-info .item {
-  width: 170px;
-  font-size: 0;
-  display: inline-block;
-}
-
-.consultant .content .honor-info .item .image {
-  width: 100px;
-  height: 100px;
-  margin-left: 35px;
-}
-
-.consultant .content .honor-info .item .text {
-  margin-top: 4px;
-  text-align: center;
-  font-family: AlibabaPuHuiTi-Regular;
-  font-size: 12px;
-  color: #000000;
-  font-weight: 400;
-  width: 170px;
-  display: inline-block;
-}
-
-.consultant .content .experience .item {
-  font-size: 0;
-  width: 520px;
-  min-width: 84px;
-  background: #F2F6FF;
-  padding: 20px;
-  position: relative;
-}
-
-.consultant .content .experience .item .time {
-  font-family: AlibabaPuHuiTi-Regular;
-  font-size: 12px;
-  color: #999999;
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  margin-top: -9px;
-}
-
-.consultant .content .experience .item .detail {
-  display: inline-block;
-  width: 400px;
-  margin-left: 90px;
-}
-
-.consultant .content .experience .item .detail .nickname {
-  font-family: AlibabaPuHuiTi-Medium;
-  font-size: 16px;
-  color: #000000;
-  font-weight: 500;
-}
-
-.consultant .content .experience .item .detail .desc {
-  font-family: AlibabaPuHuiTi-Regular;
-  font-size: 14px;
-  color: #666666;
-  margin-top: 4px;
 }
 
 /* 水滴大事件 */
@@ -752,10 +654,6 @@ table th {
   background: #005AAA;
 }
 
-.color-F2F6FF {
-  background: #F2F6FF;
-}
-
 .w-76 {
   width: 76px;
 }
@@ -765,9 +663,17 @@ table th {
 }
 
 .w-280 {
-  width: 280px;
+  width: 270px;
 }
 
-.w-80 {
-  width: 80px;
+.h-50 {
+  height: 50px;
+}
+
+.h-53 {
+  height: 53px !important;
+}
+
+.b-r-none {
+  border-right: none;
 }
