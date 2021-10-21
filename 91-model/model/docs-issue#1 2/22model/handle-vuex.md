@@ -149,7 +149,7 @@ let vue
          // 创建Vue的实例 保证更新状态可以刷新视图
          this.vm = new Vue({
              data: {
-                 state: optons.state
+                 state: options.state
              }
          })
      }
@@ -218,7 +218,7 @@ let vue
  }
  ​
  // 递归安装模块
- function installModule(store, rootState, path, rawModeule) {
+ function installModule(store, rootState, path, rawModule) {
      // 如果有子模块,安装子模块的状态
      if(path.length > 0) {
          let parentState = path.slice(0,-1).reduce((root, current) => {

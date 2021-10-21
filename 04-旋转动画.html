@@ -30,7 +30,34 @@
     cost(200); // 第2天开销
     cost(300); // 第3天开销
 
-    console.log(cost()); // 600
+    // console.log(cost()); // 600
+
+
+    // 找到要定义的模块，将这个模块定义他父亲的_children属性里
+    const rootModule = {
+      state: {
+        taskId: '',
+        targetUserName: '',
+      },
+      getters: {
+        taskId: (state) => state.taskId,
+        targetUserName: (state) => state.targetUserName,
+      }
+    }
+    const path = ['task1', 'user1']
+    const currentRoot = {
+      _raw: rootModule,
+      _children: {},
+      state: rootModule.state
+    }
+    let parentModule = path.slice(0, -1).reduce((root, current) => {
+      console.log('root', root, current)
+      return root._children[current]
+    }, currentRoot)
+
+    if (path.length > 0) {
+      parentModule._children[path[path.length - 1]] = rawModule
+    }
   </script>
 </body>
 

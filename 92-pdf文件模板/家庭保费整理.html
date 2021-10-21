@@ -5,18 +5,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>家庭保单整理</title>
+  <title>家庭保费整理</title>
   <script src="./assets/js/echarts.common.min.js"></script>
   <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
   <div class="container">
-    <!-- 家庭保单整理 -->
+
+    <!-- 家庭保费整理 -->
     <div class="family-policy">
       <img class="top-image" src="./assets/image/头部1.png" alt="">
       <div class="common-title">
-        <div class="text">家庭保单整理</div>
+        <div class="con">
+          <div class="image-1"></div>
+          <!-- <img class="image-1" src="./assets/image/箭头头部.png" alt=""> -->
+          <div class="text">家庭保费整理</div>
+          <div class="image-2"></div>
+        </div>
         <div class="en-text">FAMILY POLICY REORGANIZATION</div>
       </div>
 
@@ -73,8 +79,6 @@
       <div class="policy-total">总保费（元）:23456789.03</div>
       <div id="main" style="width: 520px;height:260px;"></div>
     </div>
-
-
   </div>
 </body>
 <script type="text/javascript">
@@ -82,55 +86,45 @@
   var myChart = echarts.init(document.getElementById('main'));
 
   // 指定图表的配置项和数据
-  var option = option = {
-    title: {
-      left: 'center'
-    },
+  option = {
     tooltip: {
       trigger: 'item'
     },
-    animation: false,
     series: [{
       name: 'Access From',
       type: 'pie',
-      radius: '50%',
+      width: 500,
+      radius: [30, 60],
       data: [{
-          value: 1048,
-          name: '张三 1048'
-        },
-        {
-          value: 735,
-          name: '李四 735'
-        },
-        {
-          value: 580,
-          name: '王五 580'
-        },
-        {
-          value: 484,
-          name: '小红 484'
-        },
-        {
           value: 100,
-          name: '小飞1 100'
+          name: '张三 占' + '10%'
         },
         {
           value: 200,
-          name: '小飞2 200'
+          name: '李四 占' + '20%'
         },
         {
           value: 300,
-          name: '小飞3 300'
+          name: '王五 占' + '30%'
         },
         {
           value: 400,
-          name: '小飞4 400'
+          name: '小红 占' + '40%'
         },
-        {
-          value: 500,
-          name: '小飞5 500'
-        }
       ],
+      animation: false,
+      label: {
+        formatter: '{name|{b}}\n{time|{c}元}',
+        minMargin: 5,
+        edgeDistance: 10,
+        lineHeight: 15,
+        rich: {
+          time: {
+            fontSize: 12,
+            color: '#333'
+          }
+        }
+      },
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
