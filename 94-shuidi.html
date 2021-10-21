@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+command+上箭头  返回上一个文件目录
+
+
+iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。
+
+
+
+for of与for in的区别，总结来说:
+for of 遍历数组
+for in 遍历对象
+
+// 查找2个数组中重复的元素
+let arr2 = ['张三', '李四', '王五', '找六', '张三']
+let arr3 = ['小明', '小红', '王五', '张三']
+let jiaoji = [...new Set(arr2)].filter(item => arr3.includes(item))
+
+
+
+1、申请免费证书（腾讯云面试ssl证书）
+2、验证选择DNS解析
+3、选择阿里云域名解析进行解析（https://dns.console.aliyun.com/?spm=5176.100251.111252.22.43a74f157f3Sty#/dns/setting/liuyong.site）
+
+阿里云的IP地址：47.105.210.88
+阿里云服务器nginx配置的文件地址：/etc/nginx/conf.d
+
+1、webpack编写插件：https://zhuanlan.zhihu.com/p/142010380 || https://www.jianshu.com/p/2995fbf92e66
+通过以上的学习，我们接下来对上面的内容进行一个小小的总结。
+1. webpack插件本质上是一个函数，它的原型上存在一个名为apply函数。webpack在初始化时 (在最早触发的environment事件之前) 会执行这个函数，并将一个包含了webpack所有配置信息的compiler作为参数传递给apply函数。
+2. 插件可以通过监听webpack本身触发的事件，在不同的时间阶段介入进行你想做的操作。
+3. 通过获取到的compiler对象，我们可以结合tapable在插件中自定义事件并将其广播。
+4. 在插件中监听一些特定的事件 (thisCompilation到afterEmit这个阶段的事件)，你可以拿到一个compilation对象，里面包含了各种编译资源，你可以通过操作这个对象对生成的资源进行添加和修改等操作。
+
+在webpack一次完整的工作流程中，会有两个重要的对象
+compiler对象
+
+    compiler是webpack完整运行一次的对象，在开始阶段就会被实例化
+    每一个webpack执行都只会有一个compiler对象，可以看作是webpack实例
+    compiler由webpack的配置，options、Loaders、plugins等等
+
+compilation对象
+
+    compilation是包含了当前的模块资源，信息等的对象
+    当webpack以开发模式运行时，当检测到一个文件内容发生变化，那么就会生成一个新的compilation对象
+    compilation对象也可以读取到compiler对象
+
+二者区别
+
+complier对象代表了一个完整的webpack生命周期，从开始到关闭。
+compilation代表的是webpack执行了一次编译
+
+
+</body>
+</html>
