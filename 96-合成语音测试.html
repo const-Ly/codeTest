@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>暂停合成语音</title>
+	</head>
+	<body>
+		<button id="playButton">播放</button>
+		<button id="pauseButton">暂停</button>
+		<script src="https://img.cacheserv.com/web/webai/microsoft.js"></script>
+		<script>
+			const subscriptionKey = "5a2f07658b8142a3a1208786dc69e706";
+			const region = "eastasia";
+			const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, region);
+			// const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+			speechConfig.speechSynthesisVoiceName = "zh-CN-XiaoxiaoNeural"
+			const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig)
+			let textToSpeak =
+				"我有一只名叫咪咪的宠物猫，它是一只非常可爱的英国短毛猫。每天早上，当我醒来的时候，它就会跳到我的床上，并用它柔软的小爪子轻轻地拍打我的脸。我很喜欢它的味道，它总是让我感到温暖和安心。咪咪是我的好朋友，我希望我们可以一直陪伴彼此，直到永远。。";
+			let currentIndex = 0;
+			let isPaused = false;
+
+			// 分割文本成多个片段（每个片段不超过200个字符）
+			function splitTextIntoParts(text) {
+				const maxCharactersPerPart = 2000;
+				let parts = [];
+				while (text.length > 0) {
+					parts.push(text.slice(0, maxCharactersPerPart));
+					text = text.slice(maxCharactersPerPart);
+				}
+				return parts;
+			}
+
+			// 合成并播放语音
+			function speakText() {
+				const parts = splitTextIntoParts(textToSpeak);
+				console.log('list', parts)
+				if (currentIndex >= parts.length) {
+					console.log("语音合成已完成。");
+					return;
+				}
+
+				if (!isPaused) {
+					const part = parts[currentIndex];
+					console.log('正在播放的文字:', part)
+					synthesizer.speakTextAsync(
+						part,
+						result => {
+							console.log(`合成并播放成功: ${result.reason}`);
+							currentIndex++;
+							setTimeout(speakText, 0); // 继续合成下一部分
+						},
+						error => {
+							console.error(`合成并播放错误: ${error}`);
+						}
+					);
+				} else {
+					// setTimeout(speakText, 100); // 等待一段时间后继续检查是否暂停
+				}
+			}
+
+			// 点击播放按钮
+			// document.getElementById("playButton1").addEventListener("click", () => {
+			// 	currentIndex = 0;
+			// 	isPaused = false;
+			// 	speakText();
+			// });
+			
+			navigator.mediaDevices.getUserMedia({
+				audio: {
+					output: true
+				}
+			});
+
+			document.getElementById("playButton").addEventListener("click", async () => {
+				try {
+					// 获取音频输出设备的权限
+					const stream = await navigator.mediaDevices.getUserMedia({
+						audio: {
+							output: true
+						}
+					});
+					console.log("已获取访问音频输出设备的权限。");
+					// 可以使用该音频流来播放音频
+					// 例如：使用 AudioContext 来创建一个音频源并连接到输出设备
+					// const audioContext = new AudioContext();
+					// const audioSource = audioContext.createMediaStreamSource(stream);
+					// audioSource.connect(audioContext.destination);
+				} catch (error) {
+					console.error("获取访问音频输出设备的权限失败：", error);
+				}
+			});
+
+			// 点击暂停按钮
+			document.getElementById("pauseButton").addEventListener("click", () => {
+				isPaused = !isPaused;
+			});
+		</script>
+
+
+	</body>
+
+</html>

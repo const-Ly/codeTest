@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>文字转语音示例</title>
+	</head>
+	<body>
+		<button id="synthesizeButton">合成语音</button>
+
+		<script src="https://img.cacheserv.com/web/webai/microsoft.js"></script>
+		<script>
+			// 你的语音服务认知服务密钥和区域
+			const subscriptionKey = "5a2f07658b8142a3a1208786dc69e706";
+			const region = "eastasia";
+
+			// 创建语音配置
+			const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, region);
+
+			// 创建语音合成器
+			const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+
+			// 要转换为语音的文本
+			const text = "你好，这是一个文字转语音的示例。";
+
+			// 点击按钮合成语音
+			document.getElementById("synthesizeButton").addEventListener("click", () => {
+				synthesizer.speakSsmlAsync(text, result => {
+					if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
+						console.log("语音合成成功！");
+
+						// 获取合成的音频数据
+						const audioData = result.audioData;
+						const blob = new Blob([audioData], {
+							type: "audio/wav"
+						});
+
+						// 创建URL并下载音频文件
+						const url = URL.createObjectURL(blob);
+						const link = document.createElement("a");
+						link.href = url;
+						link.download = "output.wav";
+						link.click();
+					} else {
+						console.error("语音合成失败: " + result.errorDetails);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

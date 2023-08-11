@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas绘制头像并下载</title>
+  <style>
+    .canvas-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 36px;
+      text-transform: uppercase;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 20px; /* 添加20px的圆角 */
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-container">
+    <div class="avatar" id="avatar">JD</div>
+    <canvas id="canvas" width="100" height="100"></canvas>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const avatar = document.getElementById('avatar');
+
+      // 绘制头像到 Canvas
+      const radius = 20; // 设置20px的圆角半径
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(canvas.width - radius, 0);
+      ctx.arc(canvas.width - radius, radius, radius, 1.5 * Math.PI, 2 * Math.PI);
+      ctx.lineTo(canvas.width, canvas.height - radius);
+      ctx.arc(canvas.width - radius, canvas.height - radius, radius, 0, 0.5 * Math.PI);
+      ctx.lineTo(radius, canvas.height);
+      ctx.arc(radius, canvas.height - radius, radius, 0.5 * Math.PI, Math.PI);
+      ctx.lineTo(0, radius);
+      ctx.arc(radius, radius, radius, Math.PI, 1.5 * Math.PI);
+      ctx.closePath();
+
+      ctx.fillStyle = '#007BFF'; // 替换成实际的头像颜色
+      ctx.fill();
+
+      ctx.fillStyle = 'white';
+      ctx.font = '36px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(avatar.textContent, canvas.width / 2, canvas.height / 2);
+
+      // 创建下载链接
+      const downloadLink = document.createElement('a');
+      downloadLink.href = canvas.toDataURL(); // 转换为图片URL
+      downloadLink.download = 'avatar.png'; // 下载图片的文件名
+      downloadLink.innerHTML = 'Download Avatar';
+      document.body.appendChild(downloadLink);
+    });
+  </script>
+</body>
+</html>
